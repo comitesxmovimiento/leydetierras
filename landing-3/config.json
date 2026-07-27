@@ -1,0 +1,66 @@
+{
+  "title": "¿Cuánto sabés de la tierra?",
+  "disclaimer": "Datos ilustrativos para reemplazar antes de publicar.",
+  "questions": [
+    {
+      "id": "limite-extranjero",
+      "question": "¿Qué porcentaje máximo del territorio rural podría quedar en manos extranjeras?",
+      "shortLabel": "Límite nacional",
+      "unit": "%",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "actual": 15,
+      "context": "El ejemplo fija un límite nacional del 15%.",
+      "impact": "De cada 100 hectáreas, 15 podrían quedar fuera del país."
+    },
+    {
+      "id": "zona-nucleo",
+      "question": "¿Cuántas hectáreas sería el tope por comprador extranjero en la zona núcleo?",
+      "shortLabel": "Tope zona núcleo",
+      "unit": "ha",
+      "min": 0,
+      "max": 10000,
+      "step": 100,
+      "actual": 1000,
+      "context": "El dato de ejemplo equivale a unas 1.400 canchas de fútbol.",
+      "impact": "Una sola operación podría abarcar la superficie de un pueblo."
+    },
+    {
+      "id": "misma-nacionalidad",
+      "question": "¿Qué porcentaje del cupo extranjero podría concentrar una misma nacionalidad?",
+      "shortLabel": "Concentración",
+      "unit": "%",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "actual": 30,
+      "context": "El ejemplo permite que un solo origen concentre el 30% del cupo.",
+      "impact": "Tres de cada diez hectáreas extranjerizadas podrían tener un mismo origen."
+    },
+    {
+      "id": "superficie-total",
+      "question": "¿Cuántas hectáreas rurales imaginás que ya están extranjerizadas?",
+      "shortLabel": "Superficie total",
+      "unit": "millones de ha",
+      "min": 0,
+      "max": 20,
+      "step": 0.5,
+      "actual": 5,
+      "context": "Cinco millones de hectáreas equivalen a más de dos provincias de Tucumán.",
+      "impact": "No es un punto en el mapa: es una escala territorial completa."
+    },
+    {
+      "id": "agua-y-frontera",
+      "question": "¿Cuántas hectáreas sensibles junto a agua o fronteras quedarían bajo revisión especial?",
+      "shortLabel": "Zonas sensibles",
+      "unit": "miles de ha",
+      "min": 0,
+      "max": 1000,
+      "step": 10,
+      "actual": 250,
+      "context": "El ejemplo protege 250 mil hectáreas de valor estratégico.",
+      "impact": "Agua, biodiversidad y soberanía también se deciden en cada venta."
+    }
+  ]
+}

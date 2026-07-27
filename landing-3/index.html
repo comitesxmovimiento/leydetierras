@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cinco preguntas para poner a prueba lo que sabés sobre la Ley de Tierras.">
+  <title>Los datos de la tierra</title>
+  <link rel="stylesheet" href="../src/shared.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="quiz-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">LT</span><span>Los datos</span></a>
+    <div class="quiz-progress"><span id="progressLabel">01 / 05</span><span class="progress-line"><i id="progressFill"></i></span></div>
+  </header>
+
+  <main>
+    <section id="quizIntro" class="quiz-intro">
+      <p class="eyebrow">Cinco preguntas. Cinco revelaciones.</p>
+      <h1 id="quizTitle">¿Cuánto sabés de la tierra?</h1>
+      <p>Elegí un valor. Después vas a ver la distancia entre lo que imaginabas y el dato.</p>
+      <p id="disclaimer" class="demo-notice"></p>
+      <button id="startButton" type="button">Empezar <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section id="questionScreen" class="question-screen" hidden>
+      <div class="question-panel">
+        <p id="questionNumber" class="eyebrow">Pregunta 01</p>
+        <h2 id="questionText"></h2>
+        <div class="number-control">
+          <input id="answerNumber" type="number" inputmode="decimal" aria-label="Tu respuesta">
+          <span id="answerUnit" class="answer-unit"></span>
+        </div>
+        <input id="answerRange" type="range" aria-label="Ajustar respuesta">
+        <div class="range-limits"><span id="minLabel"></span><span id="maxLabel"></span></div>
+        <button id="revealButton" class="reveal-button" type="button">Ver el dato real</button>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="result-screen" hidden>
+      <div class="result-heading">
+        <p id="resultKicker" class="eyebrow"></p>
+        <h2>Lo que creías<br><span>vs.</span> el dato</h2>
+      </div>
+      <div class="comparison" aria-live="polite">
+        <div class="comparison-row comparison-row--guess">
+          <div class="comparison-label"><span>Tu respuesta</span><strong id="guessValue"></strong></div>
+          <div class="bar-track"><i id="guessBar"></i></div>
+        </div>
+        <div class="comparison-row comparison-row--actual">
+          <div class="comparison-label"><span>Dato real</span><strong id="actualValue"></strong></div>
+          <div class="bar-track"><i id="actualBar"></i></div>
+        </div>
+        <p id="differenceText" class="difference"></p>
+        <p id="contextText" class="context"></p>
+        <p id="impactText" class="impact"></p>
+        <div class="result-actions">
+          <button id="shareResult" type="button">Compartir comparación</button>
+          <button id="nextQuestion" type="button">Siguiente <span aria-hidden="true">→</span></button>
+        </div>
+        <p id="shareStatus" class="share-status" role="status"></p>
+      </div>
+    </section>
+
+    <section id="quizEnd" class="quiz-end" hidden>
+      <p class="eyebrow">Ahora ya lo sabés</p>
+      <h2>La tierra se defiende con datos.</h2>
+      <button id="restartButton" type="button">Volver a responder</button>
+      <a href="../landing-2/">Crear un afiche <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <canvas id="shareCanvas" width="1080" height="1350" hidden></canvas>
+</body>
+</html>
