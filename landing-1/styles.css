@@ -1,0 +1,90 @@
+body { background: #171713; color: #f1eddf; }
+.story-header {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  mix-blend-mode: difference;
+  color: white;
+}
+.story-counter { font-size: .72rem; }
+.story-intro {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 7rem 1rem 2rem;
+  background:
+    radial-gradient(circle at 75% 25%, rgba(226,61,40,.55), transparent 28%),
+    repeating-linear-gradient(110deg, transparent 0 18px, rgba(241,237,223,.035) 18px 19px),
+    #171713;
+}
+.story-intro h1 {
+  max-width: 9ch;
+  margin: 0;
+  font-size: clamp(4.5rem, 21vw, 10rem);
+  font-weight: 400;
+  line-height: .78;
+  text-transform: uppercase;
+}
+.story-intro > p:not(.eyebrow) { max-width: 30rem; margin: 1.8rem 0; font-size: 1.05rem; line-height: 1.45; }
+.scroll-cue { align-self: flex-start; font-size: .75rem; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid; padding-bottom: .25rem; }
+.story { position: relative; }
+.story-stage {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  min-height: 100svh;
+  grid-template-rows: 52svh 1fr;
+  overflow: hidden;
+  background: #d7d0bc;
+  color: #171713;
+}
+.story-media-wrap { position: relative; overflow: hidden; background: #938b74; }
+.story-media { width: 100%; height: 100%; }
+.story-media img, .story-media video { width: 100%; height: 100%; object-fit: cover; animation: mediaIn .7s ease both; }
+.story-media.is-placeholder {
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: repeating-linear-gradient(45deg, #897f69 0 20px, #958b74 20px 40px);
+  color: #171713;
+  text-align: center;
+}
+.story-media.is-placeholder span { max-width: 24ch; padding: 1rem; background: #f4c542; font-size: .76rem; text-transform: uppercase; }
+.media-index { position: absolute; right: 1rem; bottom: .8rem; font-size: 2.3rem; color: white; text-shadow: 0 1px 8px #171713; }
+.story-copy { display: flex; flex-direction: column; justify-content: center; padding: 2rem 4rem 2rem 1rem; }
+.active-text { max-width: 18ch; margin: 0; font-size: clamp(1.75rem, 8vw, 3.4rem); line-height: .95; }
+.active-text.is-changing, .story-copy .eyebrow.is-changing { animation: textIn .55s ease both; }
+.traveler-track { position: absolute; z-index: 5; top: 2rem; right: .7rem; width: 2rem; height: calc(100% - 4rem); border-left: 1px dashed rgba(23,23,19,.5); }
+.traveler { position: absolute; top: 0; left: -12px; width: 24px; height: 43px; transition: transform .12s linear; }
+.traveler-head { position: absolute; top: 0; left: 7px; width: 10px; height: 10px; border-radius: 50%; background: #e23d28; }
+.traveler-body { position: absolute; top: 10px; left: 10px; width: 5px; height: 20px; background: #171713; transform: rotate(-8deg); }
+.traveler-leg { position: absolute; top: 28px; left: 10px; width: 4px; height: 15px; transform-origin: top; background: #171713; animation: walk .45s ease-in-out infinite alternate; }
+.traveler-leg--right { animation-delay: -.45s; }
+.story-steps { position: relative; z-index: 3; margin-top: -100svh; pointer-events: none; }
+.story-step { height: 100svh; }
+.story-end { min-height: 90svh; padding: 6rem 1rem; background: #e23d28; color: #171713; }
+.story-end h2 { max-width: 10ch; margin: 0 0 3rem; font-size: clamp(4rem, 19vw, 10rem); font-weight: 400; line-height: .8; text-transform: uppercase; }
+.story-end a { font-size: .8rem; text-transform: uppercase; }
+@keyframes mediaIn { from { opacity: .35; transform: scale(1.05); } }
+@keyframes textIn { from { opacity: 0; transform: translateY(1rem); } }
+@keyframes walk { to { transform: rotate(30deg); } }
+
+@media (min-width: 800px) {
+  .story-header { padding: 1.5rem 2rem; }
+  .story-intro { padding: 8rem 2rem 3rem; }
+  .story-intro h1 { font-size: clamp(7rem, 13vw, 13rem); }
+  .story-stage { grid-template-columns: minmax(0, 1.15fr) minmax(24rem, .85fr); grid-template-rows: 100svh; }
+  .story-copy { padding: 4rem 5rem 4rem 4rem; }
+  .active-text { font-size: clamp(2.8rem, 4.4vw, 5rem); }
+  .media-index { right: 1.5rem; bottom: 1.2rem; font-size: 4rem; }
+  .traveler-track { right: 2rem; }
+  .story-end { padding: 8rem 2rem; }
+}

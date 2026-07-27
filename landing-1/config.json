@@ -1,0 +1,17 @@
+{
+  "title": "La trama de la tierra",
+  "intro": "Diez pasos para entender lo que quieren hacer mientras nadie mira.",
+  "mediaBasePath": "../src/media/landing-1/",
+  "steps": [
+    { "text": "Todo empezó con una ley escrita a puertas cerradas.", "kicker": "La maniobra", "media": "campo-01.jpg", "type": "image", "alt": "Extensión de campo argentino" },
+    { "text": "Sus autores la llamaron progreso. Pero no dijeron para quién.", "kicker": "Las palabras", "media": "campo-02.jpg", "type": "image", "alt": "Camino que atraviesa un paisaje rural" },
+    { "text": "Querían borrar los límites que protegen nuestra tierra.", "kicker": "El cambio", "media": "campo-03.jpg", "type": "image", "alt": "Territorio visto desde lo alto" },
+    { "text": "Así, fondos extranjeros podrían comprar sin freno.", "kicker": "El negocio", "media": "campo-04.jpg", "type": "image", "alt": "Maquinaria trabajando la tierra" },
+    { "text": "Primero los campos. Después el agua que corre debajo.", "kicker": "Lo que no cuentan", "media": "campo-05.jpg", "type": "image", "alt": "Río entre montañas" },
+    { "text": "También los caminos, los montes y las semillas.", "kicker": "Todo está conectado", "media": "campo-06.jpg", "type": "image", "alt": "Bosque nativo" },
+    { "text": "Un mapa entero convertido en una vidriera para pocos.", "kicker": "El remate", "media": "campo-07.jpg", "type": "image", "alt": "Mapa y territorio argentino" },
+    { "text": "Mientras los pueblos quedarían mirando desde afuera.", "kicker": "La consecuencia", "media": "campo-08.jpg", "type": "image", "alt": "Pueblo rural" },
+    { "text": "Pero la tierra guarda memoria. Y nosotros también.", "kicker": "La respuesta", "media": "campo-09.jpg", "type": "image", "alt": "Personas caminando juntas" },
+    { "text": "Si la defendemos juntos, ningún escritorio decide su destino.", "kicker": "El futuro", "media": "campo-10.jpg", "type": "image", "alt": "Horizonte abierto sobre el campo" }
+  ]
+}

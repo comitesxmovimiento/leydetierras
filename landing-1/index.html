@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Una historia sobre la Ley de Tierras contada al hacer scroll.">
+  <title>La trama de la tierra</title>
+  <link rel="stylesheet" href="../src/shared.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="story-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">LT</span><span>La trama</span></a>
+    <span class="story-counter" aria-live="polite"><strong id="currentStep">01</strong> / <span id="totalSteps">10</span></span>
+  </header>
+
+  <main>
+    <section class="story-intro">
+      <p class="eyebrow">Scrollytelling</p>
+      <h1 id="storyTitle">La trama<br>de la tierra</h1>
+      <p id="storyIntro">Diez pasos para entender lo que quieren hacer mientras nadie mira.</p>
+      <a href="#story" class="scroll-cue">Empezar <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section id="story" class="story" aria-label="Historia">
+      <div class="story-stage">
+        <div class="story-media-wrap">
+          <div id="mediaFrame" class="story-media" aria-live="polite"></div>
+          <span id="mediaIndex" class="media-index">01</span>
+        </div>
+        <div class="story-copy">
+          <p id="activeKicker" class="eyebrow">La maniobra</p>
+          <p id="activeText" class="active-text">Todo empezó con una ley escrita a puertas cerradas.</p>
+        </div>
+        <div class="traveler-track" aria-hidden="true">
+          <div id="traveler" class="traveler">
+            <span class="traveler-head"></span>
+            <span class="traveler-body"></span>
+            <span class="traveler-leg traveler-leg--left"></span>
+            <span class="traveler-leg traveler-leg--right"></span>
+          </div>
+        </div>
+      </div>
+      <div id="storySteps" class="story-steps"></div>
+    </section>
+
+    <section class="story-end">
+      <p class="eyebrow">La historia sigue con vos</p>
+      <h2>La tierra no es mercancía.</h2>
+      <a href="../landing-2/">Convertí tu voz en un afiche <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+</body>
+</html>
