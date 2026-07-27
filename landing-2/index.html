@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creá un afiche vertical con tu mensaje sobre la tierra.">
+  <title>Tu voz ocupa lugar</title>
+  <link rel="stylesheet" href="../src/shared.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="poster-header">
+    <a class="brand" href="../index.html"><span class="brand-mark">LT</span><span>Tu voz</span></a>
+    <span class="header-format">1080 × 1920</span>
+  </header>
+
+  <main class="poster-main">
+    <section class="poster-editor" aria-labelledby="editorTitle">
+      <p class="eyebrow">Creá tu afiche</p>
+      <h1 id="editorTitle">Hacé que tu voz ocupe todo.</h1>
+      <label for="message">Tu mensaje</label>
+      <textarea id="message" maxlength="180" rows="5" placeholder="La tierra no se vende">La tierra no se vende</textarea>
+      <div class="editor-meta"><span id="charCount">24 / 180</span><span>Mejor con pocas palabras</span></div>
+
+      <fieldset class="palette-picker">
+        <legend>Elegí un color</legend>
+        <label><input type="radio" name="palette" value="red" checked><span class="swatch swatch--red">Rojo</span></label>
+        <label><input type="radio" name="palette" value="blue"><span class="swatch swatch--blue">Azul</span></label>
+        <label><input type="radio" name="palette" value="green"><span class="swatch swatch--green">Verde</span></label>
+        <label><input type="radio" name="palette" value="yellow"><span class="swatch swatch--yellow">Amarillo</span></label>
+      </fieldset>
+
+      <div class="actions">
+        <button id="shareButton" class="primary-action" type="button">Compartir afiche</button>
+        <button id="downloadButton" class="secondary-action" type="button">Descargar PNG</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="preview-panel" aria-label="Vista previa del afiche">
+      <div id="posterPreview" class="poster-preview poster-preview--red">
+        <p id="previewMessage">La tierra no se vende</p>
+        <div class="poster-signature"><span>LA TIERRA<br>NO SE VENDE</span><span>ARGENTINA<br>2026</span></div>
+      </div>
+    </section>
+  </main>
+  <canvas id="posterCanvas" width="1080" height="1920" hidden></canvas>
+</body>
+</html>
