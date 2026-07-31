@@ -86,7 +86,7 @@
         "alt": "Placeholder de Lago Escondido"
       },
       {
-        "text": "No es cualquier tierra: sitios estratégicos cerca de las fronteras, donde nacen los ríos y el agua, donde están los minerales valiosos.",
+        "text": "No es cualquier tierra: [[sitios estratégicos]] cerca de las fronteras, donde nacen los ríos y el agua, donde están los minerales valiosos.",
         "kicker": "Los territorios",
         "media": "05-placeholder.jpg",
         "media_bis": "05-b-placeholder.jpg",
@@ -102,7 +102,7 @@
         "alt": "Placeholder de paisaje argentino"
       },
       {
-        "text": "Ya tenemos un caso testigo: Lago Escondido. Un inglés, con maniobras fraudulentas, encerró un montón de hectáreas y un lago que es de todos.",
+        "text": "Ya tenemos un caso testigo: [[Lago Escondido]]El inglés Joe Lewis, con maniobras fraudulentas, encerró un montón de hectáreas y un lago que es de todos.",
         "kicker": "Caso testigo",
         "media": "07-placeholder.jpg",
         "media_bis": "07-b-placeholder.jpg",
@@ -124,7 +124,7 @@
         "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
       },
       {
-        "text": "Nuestro país tiene una riqueza incomparable: litio, tierras raras, agua dulce, bosques nativos y áreas fronterizas. Lo saben y vienen por todo.",
+        "text": "Nuestro país tiene una [[riqueza incomparable:]] litio, tierras raras, agua dulce, bosques nativos y áreas fronterizas.",
         "kicker": "La riqueza",
         "media": "08.jpg",
         "type": "image",
@@ -174,8 +174,8 @@
       },
       {
         "text": [
-          "El nuevo proyecto de ley institucionaliza los desalojos exprés y criminaliza a las familias sin techo.",
-          "En especial perjudica a las comunidades originarias que no poseen títulos de propiedad, que el Estado les niega para que puedan expulsarlos de sus tierras"
+          "[[El nuevo proyecto de ley institucionaliza los desalojos exprés y criminaliza a las familias sin techo.]]",
+          "[[En especial perjudica a las comunidades originarias que no poseen títulos de propiedad, que el Estado les niega para que puedan expulsarlos de sus tierras]]"
         ],
         "kicker": "El ataque",
         "media": null,
@@ -183,7 +183,7 @@
         "alt": "Placeholder de incendios"
       },
       {
-        "text": "No podemos ser extranjeros en nuestro propio suelo. Este 6 de agosto, ponete la Diez para defender el país.",
+        "text": "No podemos ser extranjeros en nuestro propio suelo. [[Este 6 de agosto, ponete la Diez para defender el país.]]",
         "kicker": "Sumate",
         "media": "12-b.jpg",
         "media_bis": "12.jpg",
@@ -193,7 +193,7 @@
       {
         "text": [
           "Basta de saqueos y negocios con nuestros territorios y bienes comunes naturales.",
-          "El capitalismo está destruyendo al país y al planeta. Destruyamos al capitalismo."
+          "El capitalismo está destruyendo al país y al planeta. [[Destruyamos al capitalismo.]]"
         ],
         "kicker": "Destruyamos al capitalismo",
         "media": null,

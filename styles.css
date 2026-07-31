@@ -317,6 +317,10 @@ body.landing {
   font-weight: 600;
   line-height: 1.05;
 }
+
+span.active-highlight{
+  font-size: .9em;
+}
 .active-text-group.is-changing,
 .story-copy .eyebrow.is-changing {
   animation: textIn 0.55s ease both;
@@ -340,6 +344,12 @@ body.landing {
 .story-stage.is-textonly .active-text {
   max-width: 32ch;
   font-size: clamp(1.75rem, 2rem, 5rem);
+}
+@media (min-width: 800px) {
+  .story-stage.is-textonly .active-text {
+    max-width: 32ch;
+    font-size: clamp(1.75rem, 3rem, 5rem);
+  }
 }
 .traveler-track {
   position: absolute;
