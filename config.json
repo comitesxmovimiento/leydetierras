@@ -1,0 +1,156 @@
+{
+  "site": {
+    "title": "La tierra no se vende",
+    "brandMark": "LT",
+    "brandLabel": "La tierra no se vende"
+  },
+  "menu": [
+    { "id": "trama", "number": "01", "label": "La trama" },
+    { "id": "voz", "number": "02", "label": "Tu voz" },
+    { "id": "datos", "number": "03", "label": "¿Cuánto sabés?" },
+    { "id": "quienes-somos", "number": "04", "label": "Quiénes somos" }
+  ],
+  "scrolly": {
+    "id": "trama",
+    "cover": {
+      "eyebrow": "Ni nacionales ni extranjeros: por un país sin ocupas",
+      "title": "La tierra\nen juego",
+      "intro": "El 6 de agosto se vota una ley que pone en riesgo nuestra soberanía, nuestros bienes comunes naturales, la tierra y la vivienda.",
+      "cta": "Empezar"
+    },
+    "mediaBasePath": "./src/media/scrolly/",
+    "steps": [
+      {
+        "text": "Terminó el Mundial, pero ¿sabías que el 6 de agosto Argentina juega otra final?",
+        "kicker": "El partido",
+        "media": "01-placeholder.jpg",
+        "type": "image",
+        "alt": "Placeholder de portada"
+      },
+      {
+        "text": "Ese día se vota una ley que pone en riesgo nuestra soberanía, nuestros bienes comunes naturales, la tierra y la vivienda.",
+        "kicker": "Lo que está en juego",
+        "media": "02-placeholder.jpg",
+        "media_bis": "02-b-placeholder.jpg",
+        "type": "image",
+        "alt": "Placeholder de bosque nativo"
+      },
+      {
+        "text": "La ley se llama [[\"inviolabilidad de la propiedad privada\"]]pero detrás del nombre esconde otra cosa.",
+        "kicker": "El nombre",
+        "media": "03-placeholder.jpg",
+        "type": "image",
+        "alt": "Placeholder"
+      },
+      {        "type": "quiz",
+        "id": "limite-extranjero",
+        "kicker": "Poné a prueba tus creencias",
+        "question": "¿Qué porcentaje máximo del territorio rural podría quedar en manos extranjeras?",
+        "shortLabel": "Límite nacional",
+        "unit": "%",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "actual": 15,
+        "context": "El ejemplo fija un límite nacional del 15%.",
+        "impact": "De cada 100 hectáreas, 15 podrían quedar fuera del país."
+      },
+      {        "text": "Permite que grandes capitales extranjeros compren tierras argentinas sin límite de cantidad ni restricción de lugar.",
+        "kicker": "El negocio",
+        "media": "04-b-placeholder.jpg",
+        "media_bis": "04-placeholder.jpg",
+        "type": "image",
+        "alt": "Placeholder de Lago Escondido"
+      },
+      {
+        "text": "No es cualquier tierra: sitios estratégicos cerca de las fronteras, donde nacen los ríos y el agua, donde están los minerales valiosos.",
+        "kicker": "Los territorios",
+        "media": "05-placeholder.jpg",
+        "media_bis": "05-b-placeholder.jpg",
+        "type": "image",
+        "alt": "Placeholder de territorio estratégico"
+      },
+      {
+        "text": "Privatizar y extranjerizar la tierra es ponerle un candado a nuestros bienes comunes y a la belleza de nuestros paisajes. Una Argentina sin argentinos.",
+        "kicker": "El candado",
+        "media": "06-b-placeholder.jpg",
+        "media_bis": "06-placeholder.jpg",
+        "type": "image",
+        "alt": "Placeholder de paisaje argentino"
+      },
+      {
+        "text": "Ya tenemos un caso testigo: Lago Escondido. Un inglés, con maniobras fraudulentas, encerró un montón de hectáreas y un lago que es de todos.",
+        "kicker": "Caso testigo",
+        "media": "07-placeholder.jpg",
+        "media_bis": "07-b-placeholder.jpg",
+        "type": "image",
+        "alt": "Placeholder de Lago Escondido"
+      },
+       {        "type": "quiz",
+        "id": "lago-escondido",
+        "kicker": "Poné a prueba tus creencias",
+        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
+        "shortLabel": "Límite nacional",
+        "unit": "%",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "actual": 60,
+        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
+        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
+      },
+      {
+        "text": "Nuestro país tiene una riqueza incomparable: litio, tierras raras, agua dulce, bosques nativos y áreas fronterizas. Lo saben y vienen por todo.",
+        "kicker": "La riqueza",
+        "media": "Demian Reidel.mp4",
+        "type": "video",
+        "alt": "Placeholder de infografía de recursos"
+      },
+      {
+        "text": ["🏞️🌱🌄", "Por eso buscan:", "1) derogar la Ley de Tierras (26.737) de 2011, que limitaba la extranjerización al 15% de la superficie de cada provincia y departamento."],
+        "kicker": "La ley 26.737",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder"
+      },
+      {
+        "text": ["⛓️🥷🏻🪧", "2) Blindar a quienes ya ocupan ilegítimamente y atarles las manos a futuros gobiernos, a través de la modificación del régimen de expropiación, haciéndolo mucho más restrictivo."],
+        "kicker": "La ley 26.737",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder"
+      },
+      {
+        "text": ["🔥🔥🔥", "3) Modificar la Ley de Manejo del Fuego.", "[[Incendios + compra de tierras + protección legal = negocio redondo.]]"],
+        "kicker": "El fuego",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder de incendios"
+      },
+      {
+        "text": "No podemos ser extranjeros en nuestro propio suelo. Este 6 de agosto, ponete la Diez para defender el país.",
+        "kicker": "El futuro",
+        "media": "12-b.jpg",
+        "media_bis": "12.jpg",
+        "type": "image",
+        "alt": "Placeholder de horizonte argentino"
+      }
+    ]
+  },
+  "sections": [
+    { "id": "voz", "eyebrow": "Próximamente", "title": "Tu voz", "accent": "blue" },
+    { "id": "datos", "eyebrow": "Próximamente", "title": "Los datos", "accent": "green" },
+    {
+      "id": "quienes-somos",
+      "title": "Quiénes somos",
+      "accent": "yellow",
+      "emojis": "👩🏽‍🦱 🧑🏾‍🦲 👨🏻‍🦰 👩🏿‍🦳 🧑🏼 👨🏾‍🦱 👩🏻‍🦳 🧑🏽‍🦰 👳🏽 🧕🏾 👨🏿‍🦲 👩🏼",
+      "body": "Somos un grupo de trabajadores y usuarixs de tecnología organizadxs en los Comités por un Movimiento por un Partido de la Nueva clase trabajadora.",
+      "cta": {
+        "text": "Si te interesa sumarte, podés hacerlo en",
+        "linkLabel": "comunidaddeizquierda.com",
+        "href": "https://comunidaddeizquierda.com/"
+      }
+    }
+  ]
+}

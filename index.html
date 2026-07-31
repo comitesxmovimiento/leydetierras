@@ -3,42 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tres experiencias digitales sobre la Ley de Tierras.">
+  <meta name="description" content="Una sola experiencia sobre la Ley de Tierras: la trama, tu voz, los datos y quiénes somos.">
   <title>La tierra no se vende</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./src/shared.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
 </head>
-<body class="home-page">
-  <header class="home-header">
-    <a class="brand" href="./index.html" aria-label="Inicio">
-      <span class="brand-mark">LT</span>
-      <span>La tierra no se vende</span>
+<body class="landing">
+  <header class="site-header">
+    <a class="brand" href="#trama">
+      <span class="brand-mark" id="brandMark">LT</span>
+      <span id="brandLabel">La tierra no se vende</span>
     </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
-  <main class="home-main">
-    <div class="home-intro">
-      <p class="eyebrow">Tres experiencias para entender y compartir</p>
-      <h1>La tierra<br>en juego.</h1>
-      <p>Recorré la historia, alzá tu voz y compará lo que imaginabas con los datos.</p>
-    </div>
+  <nav id="siteMenu" class="site-menu" aria-label="Secciones" aria-hidden="true">
+    <button class="menu-close" id="menuClose" type="button" aria-label="Cerrar menú">×</button>
+    <ul class="menu-list" id="menuList"></ul>
+  </nav>
 
-    <nav class="experience-list" aria-label="Experiencias">
-      <a class="experience-link experience-link--red" href="./landing-1/">
-        <span class="experience-number">01</span>
-        <span class="experience-title">La trama</span>
-        <span class="experience-action">Recorrer historia <span aria-hidden="true">→</span></span>
-      </a>
-      <a class="experience-link experience-link--blue" href="./landing-2/">
-        <span class="experience-number">02</span>
-        <span class="experience-title">Tu voz</span>
-        <span class="experience-action">Crear afiche <span aria-hidden="true">→</span></span>
-      </a>
-      <a class="experience-link experience-link--green" href="./landing-3/">
-        <span class="experience-number">03</span>
-        <span class="experience-title">Los datos</span>
-        <span class="experience-action">Poner a prueba <span aria-hidden="true">→</span></span>
-      </a>
-    </nav>
+  <span class="story-counter" aria-live="polite"><strong id="currentStep">01</strong> / <span id="totalSteps">01</span></span>
+
+  <main>
+    <section id="trama" class="story-intro">
+      <p class="eyebrow" id="coverEyebrow">Scrollytelling</p>
+      <h1 id="coverTitle">La tierra<br>en juego</h1>
+      <p id="coverIntro"></p>
+      <a href="#storyFlow" class="scroll-cue" id="coverCta">Empezar <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <div id="storyFlow"></div>
+
+    <div id="placeholders"></div>
   </main>
 </body>
 </html>

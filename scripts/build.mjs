@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const output = resolve(root, 'dist');
-const entries = ['index.html', 'landing-1', 'landing-2', 'landing-3', 'src'];
+const entries = ['index.html', 'index_old.html', 'app.js', 'styles.css', 'config.json', 'landing-1', 'landing-2', 'landing-3', 'src'];
 
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
