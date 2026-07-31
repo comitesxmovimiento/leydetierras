@@ -747,6 +747,36 @@ function uppercaseConfig(value, key) {
   return value;
 }
 
+/* ---------- Idle scroll hint toast ---------- */
+function setupIdleToast() {
+  const toast = document.querySelector('#idleToast');
+  if (!toast) return;
+  const IDLE_MS = 10000;
+  const VISIBLE_MS = 3500;
+  let idleTimer = null;
+  let hideTimer = null;
+
+  const hide = () => {
+    toast.classList.remove('is-visible');
+    toast.setAttribute('aria-hidden', 'true');
+  };
+  const show = () => {
+    toast.classList.add('is-visible');
+    toast.setAttribute('aria-hidden', 'false');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hide, VISIBLE_MS);
+  };
+  const reset = () => {
+    hide();
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(show, IDLE_MS);
+  };
+
+  ['scroll', 'pointerdown', 'pointermove', 'wheel', 'keydown', 'touchstart']
+    .forEach((evt) => window.addEventListener(evt, reset, { passive: true }));
+  reset();
+}
+
 /* ---------- Init ---------- */
 async function init() {
   try {
@@ -763,6 +793,7 @@ async function init() {
     setupMenu();
     setupScrolly(config.scrolly);
     setupScrollSpy(config.menu);
+    setupIdleToast();
   } catch (error) {
     els.flow.innerHTML = '<p class="flow-error">Abrí el proyecto con un servidor local para cargar la historia.</p>';
     console.error(error);

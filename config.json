@@ -126,7 +126,7 @@
       {
         "text": "Nuestro país tiene una [[riqueza incomparable:]] litio, tierras raras, agua dulce, bosques nativos y áreas fronterizas.",
         "kicker": "La riqueza",
-        "media": "08.jpg",
+        "media": "08-b.png",
         "type": "image",
         "alt": "Placeholder de infografía de recursos"
       },
@@ -230,6 +230,16 @@
         ],
         "kicker": "Destruyamos al capitalismo",
         "media": null,
+        "type": "image",
+        "alt": "Placeholder de incendios"
+      },
+       {
+        "text": [
+          "¡¡Que la CGT convoque a un paro contra la ley!!",
+          "[[Solo organizadxs en nuestros lugares de estudio y trabajo y en las calles podemos frenar este saqueo.]]"
+        ],
+        "kicker": "Destruyamos al capitalismo",
+        "media": "paro.jpeg",
         "type": "image",
         "alt": "Placeholder de incendios"
       }
