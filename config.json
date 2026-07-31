@@ -36,7 +36,8 @@
       "eyebrow": "Ni nacionales ni extranjeros: por un país sin ocupas",
       "title": "La tierra\nen juego",
       "intro": "El 6 de agosto se vota una ley que pone en riesgo nuestra soberanía, nuestros bienes comunes naturales, la tierra y la vivienda.",
-      "cta": "Empezar"
+      "cta": "Empezar",
+      "picture": "portada.webp"
     },
     "mediaBasePath": "./src/media/scrolly/",
     "steps": [
@@ -201,9 +202,63 @@
     },
     {
       "id": "datos",
-      "eyebrow": "Próximamente",
-      "title": "Los datos",
-      "accent": "green"
+      "title": "Más datos",
+      "accent": "green",
+      "steps": [
+         {
+        "type": "quiz",
+        "id": "dato-nacional",
+        "kicker": "Poné a prueba tus creencias",
+        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
+        "shortLabel": "Límite nacional",
+        "unit": "%",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "actual": 60,
+        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
+        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
+      }, {
+        "type": "quiz",
+        "id": "dato-departamentos-exceden",
+        "kicker": "Poné a prueba tus creencias",
+        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
+        "shortLabel": "Límite nacional",
+        "unit": "%",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "actual": 60,
+        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
+        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
+      }, {
+        "type": "quiz",
+        "id": "dato-provincias",
+        "kicker": "Poné a prueba tus creencias",
+        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
+        "shortLabel": "Límite nacional",
+        "unit": "%",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "actual": 60,
+        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
+        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
+      }, {
+        "type": "quiz",
+        "id": "dato-estadounidenses",
+        "kicker": "Poné a prueba tus creencias",
+        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
+        "shortLabel": "Límite nacional",
+        "unit": "%",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "actual": 60,
+        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
+        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
+      }
+      ]
     },
     {
       "id": "quienes-somos",
@@ -215,7 +270,8 @@
         "text": "Si te interesa sumarte, podés hacerlo en",
         "linkLabel": "comunidaddeizquierda.com",
         "href": "https://comunidaddeizquierda.com/"
-      }
+      },
+      "sources": "https://www.observatoriodetierras.ar/"
     }
   ]
 }

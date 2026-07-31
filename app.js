@@ -16,7 +16,8 @@ const els = {
   current: document.querySelector('#currentStep'),
   total: document.querySelector('#totalSteps'),
   sections: document.querySelector('#placeholders'),
-  menuShare: document.querySelector('#menuShare')
+  menuShare: document.querySelector('#menuShare'),
+  coverPicture: document.querySelector('#coverPicture'),
 };
 
 /* ---------- Menu ---------- */
@@ -96,6 +97,8 @@ function renderCover(cover) {
   els.coverTitle.innerHTML = (cover.title || '').split('\n').join('<br>');
   els.coverIntro.textContent = cover.intro || '';
   els.coverCta.innerHTML = `${cover.cta || 'Empezar'} <span aria-hidden="true">↓</span>`;
+  const imagen = mediaTag(cover, './src/media/scrolly/', cover.picture, 'media-layer media-layer--base');
+  els.coverPicture.innerHTML = imagen;
 }
 
 /* ---------- Scrollytelling ---------- */
@@ -478,7 +481,9 @@ function setupScrolly(scrolly) {
 function renderSections(sections) {
   els.sections.innerHTML = (sections || []).map((section) => {
     if (section.type === 'poster') return posterSectionMarkup(section);
+    if (Array.isArray(section.steps)) return `<div id="${section.id}" class="quiz-section" data-quiz-steps="${section.id}"></div>`;
     const emojis = section.emojis ? `<p class="section-emojis" aria-hidden="true">${section.emojis}</p>` : '';
+    const sources = section.sources ? `<p class="section-sources">Fuentes utilizadas: <a href="${section.sources}">${section.sources}</a></p>` : '';
     const eyebrow = section.eyebrow ? `<p class="eyebrow">${section.eyebrow}</p>` : '';
     const body = section.body ? `<p class="section-body">${section.body}</p>` : '';
     let cta = '';
@@ -492,11 +497,16 @@ function renderSections(sections) {
       ${body}
       ${cta}
       ${emojis}
+      ${sources}
     </section>`;
   }).join('');
 
   (sections || []).forEach((section) => {
     if (section.type === 'poster') wirePoster(section);
+    if (Array.isArray(section.steps)) {
+      const host = document.querySelector(`[data-quiz-steps="${section.id}"]`);
+      if (host) section.steps.forEach((step) => host.appendChild(createQuizInterlude(step)));
+    }
   });
 }
 
