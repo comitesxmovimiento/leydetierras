@@ -5,10 +5,30 @@
     "brandLabel": "La tierra no se vende"
   },
   "menu": [
-    { "id": "trama", "number": "01", "label": "La trama" },
-    { "id": "voz", "number": "02", "label": "Tu voz" },
-    { "id": "datos", "number": "03", "label": "¿Cuánto sabés?" },
-    { "id": "quienes-somos", "number": "04", "label": "Quiénes somos" }
+    {
+      "id": "trama",
+      "number": "01",
+      "label": "La trama",
+      "subtitle": "Conocé sobre el ataque del gobierno"
+    },
+    {
+      "id": "voz",
+      "number": "02",
+      "label": "Tu voz",
+      "subtitle": "Creá un afiche para compartir en redes"
+    },
+    {
+      "id": "datos",
+      "number": "03",
+      "label": "¿Cuánto sabés?",
+      "subtitle": "Compartible para generar conciencia"
+    },
+    {
+      "id": "quienes-somos",
+      "number": "04",
+      "label": "Quiénes somos",
+      "subtitle": "Sumate a la comunidad de izquierda"
+    }
   ],
   "scrolly": {
     "id": "trama",
@@ -42,7 +62,8 @@
         "type": "image",
         "alt": "Placeholder"
       },
-      {        "type": "quiz",
+      {
+        "type": "quiz",
         "id": "limite-extranjero",
         "kicker": "Poné a prueba tus creencias",
         "question": "¿Qué porcentaje máximo del territorio rural podría quedar en manos extranjeras?",
@@ -55,7 +76,8 @@
         "context": "El ejemplo fija un límite nacional del 15%.",
         "impact": "De cada 100 hectáreas, 15 podrían quedar fuera del país."
       },
-      {        "text": "Permite que grandes capitales extranjeros compren tierras argentinas sin límite de cantidad ni restricción de lugar.",
+      {
+        "text": "Permite que grandes capitales extranjeros compren tierras argentinas sin límite de cantidad ni restricción de lugar.",
         "kicker": "El negocio",
         "media": "04-b-placeholder.jpg",
         "media_bis": "04-placeholder.jpg",
@@ -86,7 +108,8 @@
         "type": "image",
         "alt": "Placeholder de Lago Escondido"
       },
-       {        "type": "quiz",
+      {
+        "type": "quiz",
         "id": "lago-escondido",
         "kicker": "Poné a prueba tus creencias",
         "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
@@ -107,21 +130,35 @@
         "alt": "Placeholder de infografía de recursos"
       },
       {
-        "text": ["🏞️🌱🌄", "Por eso buscan:", "1) derogar la Ley de Tierras (26.737) de 2011, que limitaba la extranjerización al 15% de la superficie de cada provincia y departamento."],
+        "text": [
+          "🏞️🌱🌄",
+          "Por eso buscan:",
+          " - ",
+          "1) derogar la Ley de Tierras (26.737) de 2011, que limitaba la extranjerización al 15% de la superficie de cada provincia y departamento."
+        ],
         "kicker": "La ley 26.737",
         "media": null,
         "type": "image",
         "alt": "Placeholder"
       },
       {
-        "text": ["⛓️🥷🏻🪧", "2) Blindar a quienes ya ocupan ilegítimamente y atarles las manos a futuros gobiernos, a través de la modificación del régimen de expropiación, haciéndolo mucho más restrictivo."],
+        "text": [
+          "⛓️🥷🏻🪧",
+          " - ",
+          "2) Blindar a quienes ya ocupan ilegítimamente y atarles las manos a futuros gobiernos, a través de la modificación del régimen de expropiación, haciéndolo mucho más restrictivo."
+        ],
         "kicker": "La ley 26.737",
         "media": null,
         "type": "image",
         "alt": "Placeholder"
       },
       {
-        "text": ["🔥🔥🔥", "3) Modificar la Ley de Manejo del Fuego.", "[[Incendios + compra de tierras + protección legal = negocio redondo.]]"],
+        "text": [
+          "🔥🔥🔥",
+          " - ",
+          "3) Modificar la Ley de Manejo del Fuego.",
+          "[[Incendios + compra de tierras + protección legal = negocio redondo.]]"
+        ],
         "kicker": "El fuego",
         "media": null,
         "type": "image",
@@ -138,8 +175,36 @@
     ]
   },
   "sections": [
-    { "id": "voz", "eyebrow": "Próximamente", "title": "Tu voz", "accent": "blue" },
-    { "id": "datos", "eyebrow": "Próximamente", "title": "Los datos", "accent": "green" },
+    {
+      "id": "voz",
+      "type": "poster",
+      "accent": "blue",
+      "eyebrow": "Creá tu afiche",
+      "title": "Creá una imagen para compartir en redes y sumar al reclamo",
+      "label": "Tu mensaje",
+      "placeholder": "Las Malvinas son Argentinas. El resto de nuestro territorio también.",
+      "defaultMessage": "Las Malvinas son Argentinas. El resto de nuestro territorio también.",
+      "maxLength": 180,
+      "hint": "Mejor con pocas palabras",
+      "paletteLegend": "Elegí un color",
+      "palettes": [
+        { "value": "red", "label": "Rojo" },
+        { "value": "blue", "label": "Azul" },
+        { "value": "green", "label": "Verde" },
+        { "value": "yellow", "label": "Amarillo" }
+      ],
+      "shareLabel": "Compartir afiche",
+      "downloadLabel": "Descargar PNG",
+      "topSignature": "El 06/08 todxs a las calles.",
+      "signature": "nosevende.com.ar - por trabajadorxs y usuarixs de tecnología organizadxs en Comités por un Movimiento Histórico.",
+      "fileName": "la-tierra-no-se-vende.png"
+    },
+    {
+      "id": "datos",
+      "eyebrow": "Próximamente",
+      "title": "Los datos",
+      "accent": "green"
+    },
     {
       "id": "quienes-somos",
       "title": "Quiénes somos",

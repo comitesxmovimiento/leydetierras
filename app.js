@@ -15,7 +15,8 @@ const els = {
   flow: document.querySelector('#storyFlow'),
   current: document.querySelector('#currentStep'),
   total: document.querySelector('#totalSteps'),
-  sections: document.querySelector('#placeholders')
+  sections: document.querySelector('#placeholders'),
+  menuShare: document.querySelector('#menuShare')
 };
 
 /* ---------- Menu ---------- */
@@ -26,12 +27,18 @@ function renderMenu(site, menu) {
     <li>
       <a class="menu-link" href="#${item.id}" data-target="${item.id}">
         <span class="menu-number">${item.number || ''}</span>
-        <span class="menu-label">${item.label}</span>
+        <span class="menu-text">
+          <span class="menu-label">${item.label}</span>
+          ${item.subtitle ? `<span class="menu-subtitle">${item.subtitle}</span>` : ''}
+        </span>
       </a>
     </li>`).join('');
   els.menuList.querySelectorAll('.menu-link').forEach((link) => {
     link.addEventListener('click', closeMenu);
   });
+  if (els.menuShare) {
+    els.menuShare.textContent = site.shareLabel || 'Compartir';
+  }
 }
 
 function openMenu() {
@@ -49,9 +56,38 @@ function closeMenu() {
 function setupMenu() {
   els.menuToggle.addEventListener('click', openMenu);
   els.menuClose.addEventListener('click', closeMenu);
+  if (els.menuShare) {
+    els.menuShare.addEventListener('click', shareSite);
+  }
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') closeMenu();
   });
+}
+
+async function shareSite() {
+  const site = state.config?.site || {};
+  const shareData = {
+    title: site.title || document.title,
+    text: site.shareText || site.title || document.title,
+    url: window.location.href
+  };
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      return;
+    } catch (error) {
+      if (error.name === 'AbortError') return;
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(shareData.url);
+    els.menuShare.textContent = 'Link copiado';
+    setTimeout(() => {
+      els.menuShare.textContent = site.shareLabel || 'Compartir';
+    }, 2000);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 /* ---------- Cover ---------- */
@@ -441,6 +477,7 @@ function setupScrolly(scrolly) {
 /* ---------- Placeholder sections ---------- */
 function renderSections(sections) {
   els.sections.innerHTML = (sections || []).map((section) => {
+    if (section.type === 'poster') return posterSectionMarkup(section);
     const emojis = section.emojis ? `<p class="section-emojis" aria-hidden="true">${section.emojis}</p>` : '';
     const eyebrow = section.eyebrow ? `<p class="eyebrow">${section.eyebrow}</p>` : '';
     const body = section.body ? `<p class="section-body">${section.body}</p>` : '';
@@ -457,7 +494,201 @@ function renderSections(sections) {
       ${emojis}
     </section>`;
   }).join('');
+
+  (sections || []).forEach((section) => {
+    if (section.type === 'poster') wirePoster(section);
+  });
 }
+
+/* ---------- Poster editor (estilo landing-2) ---------- */
+const POSTER_SIZE = { width: 1080, height: 1920 };
+const POSTER_COLORS = {
+  red: { background: '#e23d28', foreground: '#f1eddf' },
+  blue: { background: '#2f60d3', foreground: '#f1eddf' },
+  green: { background: '#357a53', foreground: '#f1eddf' },
+  yellow: { background: '#f4c542', foreground: '#171713' }
+};
+
+function posterSectionMarkup(section) {
+  const palettes = section.palettes || [];
+  const first = palettes[0]?.value || 'red';
+  const swatches = palettes.map((palette, index) => `
+        <label><input type="radio" name="palette-${section.id}" value="${palette.value}"${index === 0 ? ' checked' : ''}><span class="swatch swatch--${palette.value}">${palette.label || ''}</span></label>`).join('');
+  return `
+    <section id="${section.id}" class="poster-section poster-section--${section.accent || 'blue'}">
+      <div class="poster-editor">
+        <p class="eyebrow">${section.eyebrow || ''}</p>
+        <h2 class="poster-title">${section.title || ''}</h2>
+        <label for="posterInput-${section.id}">${section.label || ''}</label>
+        <textarea id="posterInput-${section.id}" class="poster-input" maxlength="${section.maxLength || 180}" rows="4" placeholder="${section.placeholder || ''}" data-role="input">${section.defaultMessage || ''}</textarea>
+        <div class="editor-meta"><span data-role="charCount"></span><span>${section.hint || ''}</span></div>
+        <fieldset class="palette-picker">
+          <legend>${section.paletteLegend || ''}</legend>${swatches}
+        </fieldset>
+        <div class="actions">
+          <button type="button" class="primary-action" data-role="share">${section.shareLabel || 'Compartir'}</button>
+          <button type="button" class="secondary-action" data-role="download">${section.downloadLabel || 'Descargar'}</button>
+        </div>
+        <p class="status" data-role="status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="preview-panel">
+        <div class="poster-preview poster-preview--${first}" data-role="preview">
+          <p data-role="previewMessage"></p>
+          <div class="top-poster-signature"><span>${section.topSignature || ''}</span></div>
+          <div class="poster-signature"><span>${section.signature || ''}</span></div>
+        </div>
+      </div>
+      <canvas class="poster-canvas" width="${POSTER_SIZE.width}" height="${POSTER_SIZE.height}" hidden data-role="canvas"></canvas>
+    </section>`;
+}
+
+function posterWrapText(context, text, maxWidth) {
+  const lines = [];
+  text.trim().split(/\n+/).forEach((paragraph) => {
+    let line = '';
+    paragraph.trim().split(/\s+/).forEach((word) => {
+      const candidate = line ? `${line} ${word}` : word;
+      if (context.measureText(candidate).width <= maxWidth || !line) line = candidate;
+      else { lines.push(line); line = word; }
+    });
+    if (line) lines.push(line);
+  });
+  return lines;
+}
+
+function posterFittedText(context, text, maxWidth, maxHeight) {
+  let low = 40;
+  let high = 360;
+  let result = { size: low, lines: [text], lineHeight: low * 0.86 };
+  while (low <= high) {
+    const size = Math.floor((low + high) / 2);
+    context.font = `${size}px "Malvinas Sans"`;
+    const lines = posterWrapText(context, text, maxWidth);
+    const lineHeight = size * 0.86;
+    const widest = Math.max(...lines.map((line) => context.measureText(line).width), 0);
+    if (lines.length * lineHeight <= maxHeight && widest <= maxWidth) {
+      result = { size, lines, lineHeight };
+      low = size + 1;
+    } else high = size - 1;
+  }
+  return result;
+}
+
+async function renderPosterCanvas(refs, section) {
+  const canvas = refs.canvas;
+  const context = canvas.getContext('2d');
+  await document.fonts.load('100px "Malvinas Sans"');
+  const palette = POSTER_COLORS[refs.currentPalette()] || POSTER_COLORS.red;
+  const text = refs.input.value.trim() || refs.fallback;
+  const { width: WIDTH, height: HEIGHT } = POSTER_SIZE;
+
+  context.fillStyle = palette.background;
+  context.fillRect(0, 0, WIDTH, HEIGHT);
+
+  context.strokeStyle = `${palette.foreground}20`;
+  context.lineWidth = 2;
+  for (let x = -HEIGHT; x < WIDTH; x += 46) {
+    context.beginPath();
+    context.moveTo(x, 0);
+    context.lineTo(x + HEIGHT, HEIGHT);
+    context.stroke();
+  }
+
+  const fitted = posterFittedText(context, text.toUpperCase(), 880, 1160);
+  context.font = `${fitted.size}px "Malvinas Sans"`;
+  context.fillStyle = palette.foreground;
+  context.textAlign = 'left';
+  context.textBaseline = 'top';
+  const blockHeight = fitted.lines.length * fitted.lineHeight;
+  let y = (HEIGHT - 200 - blockHeight) / 2 - 20;
+  fitted.lines.forEach((line) => {
+    context.fillText(line, 100, y);
+    y += fitted.lineHeight;
+  });
+
+  context.strokeStyle = palette.foreground;
+  context.lineWidth = 2;
+  context.beginPath();
+  context.moveTo(100, 1690);
+  context.lineTo(980, 1690);
+  context.stroke();
+
+  context.font = '30px "Malvinas Sans"';
+  context.textBaseline = 'top';
+  let sy = 1720;
+  posterWrapText(context, section.signature || '', 880).forEach((line) => {
+    context.fillText(line, 100, sy);
+    sy += 38;
+  });
+  return canvas;
+}
+
+function updatePoster(refs, section) {
+  const value = refs.input.value;
+  const text = value || refs.fallback;
+  refs.previewMessage.textContent = text;
+  refs.charCount.textContent = `${value.length} / ${section.maxLength || 180}`;
+  refs.preview.className = `poster-preview poster-preview--${refs.currentPalette()}`;
+  const length = Math.max(text.length, 1);
+  refs.previewMessage.style.fontSize = `${Math.max(1.25, Math.min(3.8, 11 / Math.sqrt(length / 5)))}rem`;
+}
+
+async function posterBlob(refs, section) {
+  await renderPosterCanvas(refs, section);
+  return new Promise((resolve) => refs.canvas.toBlob(resolve, 'image/png'));
+}
+
+function downloadPosterBlob(blob, fileName) {
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = fileName;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+}
+
+function wirePoster(section) {
+  const root = document.querySelector(`#${section.id}`);
+  if (!root) return;
+  const refs = {
+    input: root.querySelector('[data-role="input"]'),
+    preview: root.querySelector('[data-role="preview"]'),
+    previewMessage: root.querySelector('[data-role="previewMessage"]'),
+    charCount: root.querySelector('[data-role="charCount"]'),
+    canvas: root.querySelector('[data-role="canvas"]'),
+    status: root.querySelector('[data-role="status"]'),
+    fallback: section.placeholder || section.defaultMessage || '',
+    currentPalette: () => root.querySelector(`input[name="palette-${section.id}"]:checked`).value
+  };
+  const fileName = section.fileName || 'afiche.png';
+
+  refs.input.addEventListener('input', () => updatePoster(refs, section));
+  root.querySelectorAll(`input[name="palette-${section.id}"]`).forEach((input) => {
+    input.addEventListener('change', () => updatePoster(refs, section));
+  });
+
+  root.querySelector('[data-role="share"]').addEventListener('click', async () => {
+    const blob = await posterBlob(refs, section);
+    const file = new File([blob], fileName, { type: 'image/png' });
+    if (navigator.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({ title: section.site || document.title, text: refs.input.value, files: [file] });
+        refs.status.textContent = 'Afiche compartido.';
+        return;
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+      }
+    }
+    downloadPosterBlob(blob, fileName);
+    refs.status.textContent = 'Tu navegador no permite compartir archivos: descargamos el PNG.';
+  });
+
+  root.querySelector('[data-role="download"]').addEventListener('click', async () => {
+    downloadPosterBlob(await posterBlob(refs, section), fileName);
+  });
+
+  updatePoster(refs, section);
+}
+
 
 /* ---------- Active menu highlight ---------- */
 function setupScrollSpy(menu) {
@@ -482,7 +713,7 @@ function setupScrollSpy(menu) {
 /* ---------- Uppercase all display text ---------- */
 // La tipografía no renderiza bien las minúsculas: pasamos a mayúsculas todos
 // los textos de la config, salvo las claves técnicas (ids, rutas, links, etc.).
-const RAW_KEYS = new Set(['id', 'accent', 'type', 'href', 'media', 'media_bis', 'mediaBasePath']);
+const RAW_KEYS = new Set(['id', 'accent', 'type', 'href', 'media', 'media_bis', 'mediaBasePath', 'value', 'fileName', 'subtitle']);
 
 function uppercaseConfig(value, key) {
   if (typeof value === 'string') {

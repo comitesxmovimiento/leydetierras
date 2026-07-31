@@ -89,7 +89,33 @@ body.landing { font-family: "Zilla Slab", Georgia, serif; }
 }
 .menu-link:hover, .menu-link.is-active { padding-inline: .8rem; background: #e23d28; color: #171713; }
 .menu-number { font-size: .7rem; }
+.menu-text { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
 .menu-label { font-size: clamp(2.2rem, 12vw, 4.5rem); line-height: .9; text-transform: uppercase; }
+.menu-subtitle {
+  max-width: 26ch;
+  font-family: "Zilla Slab", Georgia, serif;
+  font-size: clamp(.85rem, 3.4vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: none;
+  opacity: .78;
+}
+.menu-share {
+  margin-top: 1.6rem;
+  align-self: flex-start;
+  min-height: 3rem;
+  padding: .7rem 1.4rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: .95rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .25s ease, color .25s ease;
+}
+.menu-share:hover { background: #e23d28; color: #171713; border-color: #e23d28; }
 
 /* ---------- Scrollytelling cover ---------- */
 .story-intro {
@@ -304,6 +330,117 @@ body.landing { font-family: "Zilla Slab", Georgia, serif; }
 .placeholder--green { background: #357a53; color: white; }
 .placeholder--yellow { background: #f4c542; color: #171713; }
 .placeholder--red { background: #e23d28; color: #171713; }
+
+/* ---------- Poster editor (Tu voz) ---------- */
+.poster-section { display: grid; background: #f1eddf; color: #171713; }
+.poster-editor { padding: 4.5rem 1.25rem 2.5rem; }
+.poster-editor .eyebrow { margin: 0 0 .35rem; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; }
+.poster-title {
+  max-width: 18ch;
+  margin: 0 0 2.5rem;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: clamp(2rem, 7vw, 3.6rem);
+  font-weight: 400;
+  line-height: .95;
+  text-transform: uppercase;
+}
+.poster-editor > label,
+.poster-section .palette-picker legend { display: block; margin-bottom: .65rem; font-size: .72rem; text-transform: uppercase; }
+.poster-input {
+  width: 100%;
+  min-height: 7rem;
+  padding: 1rem;
+  border: 1px solid #171713;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  resize: vertical;
+  font-family: "Zilla Slab", Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+.poster-input:focus { box-shadow: inset 0 0 0 2px #e23d28; }
+.poster-section .editor-meta { display: flex; justify-content: space-between; gap: 1rem; margin-top: .5rem; font-size: .65rem; text-transform: uppercase; }
+.poster-section .palette-picker { display: flex; flex-wrap: wrap; gap: .6rem; margin: 2rem 0; padding: 0; border: 0; }
+.poster-section .palette-picker legend { width: 100%; }
+.poster-section .palette-picker input { position: absolute; opacity: 0; }
+.poster-section .swatch { display: grid; width: 3rem; aspect-ratio: 1; place-items: center; overflow: hidden; border: 1px solid #171713; border-radius: 50%; color: transparent; cursor: pointer; }
+.swatch--red { background: #e23d28; }
+.swatch--blue { background: #2f60d3; }
+.swatch--green { background: #357a53; }
+.swatch--yellow { background: #f4c542; }
+.poster-section .palette-picker input:checked + .swatch { box-shadow: 0 0 0 3px #f1eddf, 0 0 0 5px #171713; }
+.poster-section .actions { display: grid; gap: .7rem; }
+.poster-section .actions button {
+  min-height: 3.4rem;
+  padding: .8rem 1rem;
+  border: 1px solid #171713;
+  cursor: pointer;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  text-transform: uppercase;
+}
+.poster-section .primary-action { background: #171713; color: #f1eddf; }
+.poster-section .secondary-action { background: transparent; }
+.poster-section .status { min-height: 1.2em; font-size: .72rem; }
+.preview-panel { display: grid; place-items: center; padding: 3rem 1.5rem; background: #262621; }
+.poster-preview {
+  position: relative;
+  display: flex;
+  width: min(100%, 21rem);
+  aspect-ratio: 9 / 16;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 7%;
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,.3);
+  color: #f1eddf;
+}
+.poster-preview::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(108deg, transparent 0 18px, rgba(255,255,255,.05) 18px 19px); pointer-events: none; }
+.poster-preview--red { background: #e23d28; }
+.poster-preview--blue { background: #2f60d3; }
+.poster-preview--green { background: #357a53; }
+.poster-preview--yellow { background: #f4c542; color: #171713; }
+.poster-preview [data-role="previewMessage"] {
+  position: relative;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.poster-signature {
+  position: absolute;
+  right: 7%;
+  bottom: 5%;
+  left: 7%;
+  padding-top: .7rem;
+  border-top: 1px solid currentColor;
+  font-family: "Zilla Slab", "Trebuchet MS", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.top-poster-signature {
+  position: absolute;
+  right: 7%;
+  top: 5%;
+  left: 7%;
+  padding-bottom: .7rem;
+  border-bottom: 1px solid currentColor;
+  font-family: "Zilla Slab", sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.poster-canvas { display: none; }
+@media (min-width: 850px) {
+  .poster-section { grid-template-columns: minmax(24rem, .9fr) minmax(28rem, 1.1fr); }
+  .poster-editor { display: flex; flex-direction: column; justify-content: center; padding: 5rem clamp(2rem, 5vw, 5rem); }
+  .poster-title { font-size: clamp(2.4rem, 3.4vw, 3.6rem); }
+  .preview-panel { min-height: 100svh; }
+  .poster-preview { width: min(48vh, 24rem); }
+}
 
 @keyframes mediaIn { from { opacity: .35; transform: scale(1.05); } }
 @keyframes textIn { from { opacity: 0; transform: translateY(1rem); } }
