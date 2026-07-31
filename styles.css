@@ -926,6 +926,7 @@ span.active-highlight{
 @media (min-width: 800px) {
   #coverPicture {
     width: 500px;
+    max-width: 30%;
     height: 90vh;
     overflow: hidden;
     position: absolute;

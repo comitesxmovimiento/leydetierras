@@ -67,7 +67,7 @@
         "type": "quiz",
         "id": "limite-extranjero",
         "kicker": "Poné a prueba tus creencias",
-        "question": "¿Cuántas hectáreas de nuestro país YA se encuentran en manos extranjeras?",
+        "question": "¿Cuántas hectáreas de nuestro país crees que YA se encuentran en manos extranjeras?",
         "shortLabel": "Límite nacional",
         "unit": "HA",
         "min": 0,
@@ -89,7 +89,7 @@
         "text": "No es cualquier tierra: [[sitios estratégicos]] cerca de las fronteras, donde nacen los ríos y el agua, donde están los minerales valiosos.",
         "kicker": "Los territorios",
         "media": "05-placeholder.jpg",
-        "media_bis": "05-b-placeholder.jpg",
+        "media_bis": "05.png",
         "type": "image",
         "alt": "Placeholder de territorio estratégico"
       },
@@ -142,7 +142,7 @@
           "Por eso buscan:",
           "🏞️🌱🌄",
           " - ",
-          "1) derogar la Ley de Tierras (26.737) de 2011, que limitaba la extranjerización al 15% de la superficie de cada provincia y departamento."
+          "1) derogar la Ley de Tierras (26.737) de 2011, que limita la extranjerización al 15% de la superficie de cada provincia y departamento."
         ],
         "kicker": "La ley 26.737",
         "media": null,
@@ -153,7 +153,7 @@
         "text": [
           "⛓️🥷🏻🪧",
           " - ",
-          "2) Blindar a quienes ya ocupan ilegítimamente y atarles las manos a futuros gobiernos, a través de la modificación del régimen de expropiación, haciéndolo mucho más restrictivo. La modificación de esta ley también facilitaría el desalojo de Comunidades Oiriganrias de sus legítimos territorios, y los desalojos urbanos exprés."
+          "2) Blindar a quienes ya ocupan ilegítimamente y atarles las manos a futuros gobiernos, a través de la modificación del régimen de expropiación, haciéndolo mucho más restrictivo."
         ],
         "kicker": "Los desalojos",
         "media": null,
@@ -174,7 +174,40 @@
       },
       {
         "text": [
-          "[[El nuevo proyecto de ley institucionaliza los desalojos exprés y criminaliza a las familias sin techo.]]",
+          "🔥🔥🔥",
+          " - ",
+          "El proyecto elimina las restricciones que hoy impiden cambiar el uso de tierras afectadas por incendios durante 30 o 60 años, según el caso."
+        ],
+        "kicker": "El fuego",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder de incendios"
+      },
+      {
+        "text": [
+          "🔥🔥🔥",
+          " - ",
+          "[[Mientras la legislación vigente busca desalentar los incendios intencionales al evitar que se obtengan beneficios económicos mediante la urbanización, la expansión agropecuaria u otros emprendimientos sobre áreas quemadas...]]"
+        ],
+        "kicker": "El fuego",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder de incendios"
+      },
+      {
+        "text": [
+          "🔥🔥🔥",
+          " - ",
+          "[[...la modificación habilita esos cambios de uso del suelo, lo que incentiva incendios con fines especulativos y favorecer principalmente a grandes propietarios.]]"
+        ],
+        "kicker": "El fuego",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder de incendios"
+      },
+      {
+        "text": [
+          "Además, el nuevo proyecto de ley y los cambios en el código civil y procesal institucionalizan los desalojos exprés y criminalizan a las familias sin techo.",
           "[[En especial perjudica a las comunidades originarias que no poseen títulos de propiedad, que el Estado les niega para que puedan expulsarlos de sus tierras]]"
         ],
         "kicker": "El ataque",
@@ -304,7 +337,9 @@
       "sources": "https://www.observatoriodetierras.ar/",
       "sources_2": "https://www.laizquierdadiario.com/Este-jueves-el-Senado-trata-la-ley-de-extranjerizacion-de-tierras",
       "sources_2_text": "La Izquierda Diario: Saqueo. Este jueves el Senado trata la ley de extranjerización de tierras",
-      "sources_3": "https://laizquierdadiario.com"
+      "sources_3": "https://www.laizquierdadiario.com/Ley-de-Inviolabilidad-de-la-Propiedad-Privada-por-que-la-llaman-ley-de-extranjerizacion",
+      "sources_3_text": "La Izquierda Diario: Ley de Inviolabilidad de la Propiedad Privada: por qué la llaman ley de extranjerización",
+      "sources_4": "https://laizquierdadiario.com"
     }
   ]
 }

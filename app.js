@@ -485,7 +485,8 @@ function renderSections(sections) {
     const emojis = section.emojis ? `<p class="section-emojis" aria-hidden="true">${section.emojis}</p>` : '';
     const sources = section.sources ? `<p class="section-sources">Fuentes utilizadas: <a href="${section.sources}">${section.sources}</a></p>` : '';
     const sources_2 = section.sources_2 ? `<p class="section-sources"><a href="${section.sources_2}">${section.sources_2_text}</a></p>` : '';
-    const sources_3 = section.sources_3 ? `<p class="section-sources"><a href="${section.sources_3}">${section.sources_3}</a></p>` : '';
+    const sources_3 = section.sources_3 ? `<p class="section-sources"><a href="${section.sources_3}">${section.sources_3_text}</a></p>` : '';
+    const sources_4 = section.sources_4 ? `<p class="section-sources"><a href="${section.sources_4}">${section.sources_4}</a></p>` : '';
     const eyebrow = section.eyebrow ? `<p class="eyebrow">${section.eyebrow}</p>` : '';
     const body = section.body ? `<p class="section-body">${section.body}</p>` : '';
     let cta = '';
@@ -502,6 +503,7 @@ function renderSections(sections) {
       ${sources}
       ${sources_2}
       ${sources_3}
+      ${sources_4}
       ${emojis}
     </section>`;
   }).join('');
