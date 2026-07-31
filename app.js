@@ -484,6 +484,8 @@ function renderSections(sections) {
     if (Array.isArray(section.steps)) return `<div id="${section.id}" class="quiz-section" data-quiz-steps="${section.id}"></div>`;
     const emojis = section.emojis ? `<p class="section-emojis" aria-hidden="true">${section.emojis}</p>` : '';
     const sources = section.sources ? `<p class="section-sources">Fuentes utilizadas: <a href="${section.sources}">${section.sources}</a></p>` : '';
+    const sources_2 = section.sources_2 ? `<p class="section-sources"><a href="${section.sources_2}">${section.sources_2_text}</a></p>` : '';
+    const sources_3 = section.sources_3 ? `<p class="section-sources"><a href="${section.sources_3}">${section.sources_3}</a></p>` : '';
     const eyebrow = section.eyebrow ? `<p class="eyebrow">${section.eyebrow}</p>` : '';
     const body = section.body ? `<p class="section-body">${section.body}</p>` : '';
     let cta = '';
@@ -498,6 +500,9 @@ function renderSections(sections) {
       ${cta}
       ${emojis}
       ${sources}
+      ${sources_2}
+      ${sources_3}
+      ${emojis}
     </section>`;
   }).join('');
 

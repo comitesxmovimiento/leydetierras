@@ -67,15 +67,15 @@
         "type": "quiz",
         "id": "limite-extranjero",
         "kicker": "Poné a prueba tus creencias",
-        "question": "¿Qué porcentaje máximo del territorio rural podría quedar en manos extranjeras?",
+        "question": "¿Cuántas hectáreas de nuestro país YA se encuentran en manos extranjeras?",
         "shortLabel": "Límite nacional",
-        "unit": "%",
+        "unit": "HA",
         "min": 0,
-        "max": 100,
+        "max": 15000000,
         "step": 1,
-        "actual": 15,
-        "context": "El ejemplo fija un límite nacional del 15%.",
-        "impact": "De cada 100 hectáreas, 15 podrían quedar fuera del país."
+        "actual": 13000000,
+        "context": "Más de 130.000km2 de nuestro país están concentrados en pocas manos extranjeras",
+        "impact": "Es el equivalente a la superficie de la provincia de Santa Fe completa."
       },
       {
         "text": "Permite que grandes capitales extranjeros compren tierras argentinas sin límite de cantidad ni restricción de lugar.",
@@ -94,7 +94,7 @@
         "alt": "Placeholder de territorio estratégico"
       },
       {
-        "text": "Privatizar y extranjerizar la tierra es ponerle un candado a nuestros bienes comunes y a la belleza de nuestros paisajes. Una Argentina sin argentinos.",
+        "text": "Privatizar y extranjerizar la tierra es ponerle un candado a nuestros bienes comunes y a la belleza de nuestros paisajes.",
         "kicker": "El candado",
         "media": "06-b-placeholder.jpg",
         "media_bis": "06-placeholder.jpg",
@@ -120,20 +120,27 @@
         "max": 100,
         "step": 1,
         "actual": 60,
-        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
+        "context": "1 hectárea es aproximadamente equivalente a una manzana (de calles de 100 metros de largo).",
         "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
       },
       {
         "text": "Nuestro país tiene una riqueza incomparable: litio, tierras raras, agua dulce, bosques nativos y áreas fronterizas. Lo saben y vienen por todo.",
         "kicker": "La riqueza",
+        "media": "08.jpg",
+        "type": "image",
+        "alt": "Placeholder de infografía de recursos"
+      },
+      {
+        "text": "Lo saben y vienen por todo.",
+        "kicker": "Vienen por nosotrxs",
         "media": "Demian Reidel.mp4",
         "type": "video",
         "alt": "Placeholder de infografía de recursos"
       },
       {
         "text": [
-          "🏞️🌱🌄",
           "Por eso buscan:",
+          "🏞️🌱🌄",
           " - ",
           "1) derogar la Ley de Tierras (26.737) de 2011, que limitaba la extranjerización al 15% de la superficie de cada provincia y departamento."
         ],
@@ -146,9 +153,9 @@
         "text": [
           "⛓️🥷🏻🪧",
           " - ",
-          "2) Blindar a quienes ya ocupan ilegítimamente y atarles las manos a futuros gobiernos, a través de la modificación del régimen de expropiación, haciéndolo mucho más restrictivo."
+          "2) Blindar a quienes ya ocupan ilegítimamente y atarles las manos a futuros gobiernos, a través de la modificación del régimen de expropiación, haciéndolo mucho más restrictivo. La modificación de esta ley también facilitaría el desalojo de Comunidades Oiriganrias de sus legítimos territorios, y los desalojos urbanos exprés."
         ],
-        "kicker": "La ley 26.737",
+        "kicker": "Los desalojos",
         "media": null,
         "type": "image",
         "alt": "Placeholder"
@@ -166,12 +173,32 @@
         "alt": "Placeholder de incendios"
       },
       {
+        "text": [
+          "El nuevo proyecto de ley institucionaliza los desalojos exprés y criminaliza a las familias sin techo.",
+          "En especial perjudica a las comunidades originarias que no poseen títulos de propiedad, que el Estado les niega para que puedan expulsarlos de sus tierras"
+        ],
+        "kicker": "El ataque",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder de incendios"
+      },
+      {
         "text": "No podemos ser extranjeros en nuestro propio suelo. Este 6 de agosto, ponete la Diez para defender el país.",
-        "kicker": "El futuro",
+        "kicker": "Sumate",
         "media": "12-b.jpg",
         "media_bis": "12.jpg",
         "type": "image",
         "alt": "Placeholder de horizonte argentino"
+      },
+      {
+        "text": [
+          "Basta de saqueos y negocios con nuestros territorios y bienes comunes naturales.",
+          "El capitalismo está destruyendo al país y al planeta. Destruyamos al capitalismo."
+        ],
+        "kicker": "Destruyamos al capitalismo",
+        "media": null,
+        "type": "image",
+        "alt": "Placeholder de incendios"
       }
     ]
   },
@@ -197,7 +224,7 @@
       "shareLabel": "Compartir afiche",
       "downloadLabel": "Descargar PNG",
       "topSignature": "El 06/08 todxs a las calles.",
-      "signature": "nosevende.com.ar - por trabajadorxs y usuarixs de tecnología organizadxs en Comités por un Movimiento Histórico.",
+      "signature": "Creá el tuyo en <span>nosevende.com.ar</span> - por trabajadorxs y usuarixs de tecnología organizadxs en Comités por un Movimiento Histórico.",
       "fileName": "la-tierra-no-se-vende.png"
     },
     {
@@ -205,59 +232,62 @@
       "title": "Más datos",
       "accent": "green",
       "steps": [
-         {
-        "type": "quiz",
-        "id": "dato-nacional",
-        "kicker": "Poné a prueba tus creencias",
-        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
-        "shortLabel": "Límite nacional",
-        "unit": "%",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "actual": 60,
-        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
-        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
-      }, {
-        "type": "quiz",
-        "id": "dato-departamentos-exceden",
-        "kicker": "Poné a prueba tus creencias",
-        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
-        "shortLabel": "Límite nacional",
-        "unit": "%",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "actual": 60,
-        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
-        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
-      }, {
-        "type": "quiz",
-        "id": "dato-provincias",
-        "kicker": "Poné a prueba tus creencias",
-        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
-        "shortLabel": "Límite nacional",
-        "unit": "%",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "actual": 60,
-        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
-        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
-      }, {
-        "type": "quiz",
-        "id": "dato-estadounidenses",
-        "kicker": "Poné a prueba tus creencias",
-        "question": "¿A qué porcentaje de la superficie de la Ciudad de Buenos Aires equivale el terreno de Lewis?",
-        "shortLabel": "Límite nacional",
-        "unit": "%",
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "actual": 60,
-        "context": "1 hectárea es aproximadamente equivalente a una manzana de la Ciudad de Buenos Aires (de calles de 100 metros de largo).",
-        "impact": "El terreno de Lewis mide 12.000 hectáreas, lo que equivale a 60% de la superficie de la Ciudad de Buenos Aires."
-      }
+        {
+          "type": "quiz",
+          "id": "dato-nacional",
+          "kicker": "Poné a prueba tus creencias",
+          "question": "¿De cuánto porcentaje de la provincia de Misiones es dueña la corporación Arauca?",
+          "shortLabel": "Porcentaje",
+          "unit": "%",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "actual": 27,
+          "context": "La corporación forestal de origen chileno Arauca posee el 27% de toda la superficie de la provincia de Misiones",
+          "impact": "Cuenta con cientos de miles de hectáreas productivas distribuidas entre Paraguay, Brasil, Bolivia y Argentina. Es controlada por el Grupo IRSA, bajo la dirección del empresario patrocinador de Milei Eduardo Elsztain."
+        },
+        {
+          "type": "quiz",
+          "id": "dato-departamentos-exceden",
+          "kicker": "Poné a prueba tus creencias",
+          "question": "¿En cuántos departamentos se supera el límite de tierras extranjeras fijadas por la ley?",
+          "shortLabel": "Límite nacional",
+          "unit": "",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "actual": 36,
+          "context": "Existen 36 departamentos que ya exceden el límite fijado por la ley.",
+          "impact": "Y hay cuatro casos –Lácar (Neuquén), General Lamadrid (La Rioja) y Molinos y San Carlos (Salta)– donde la extranjerización supera el 50%. Todos ellos concentran bienes estratégicos como agua dulce o recursos minerales."
+        },
+        {
+          "type": "quiz",
+          "id": "dato-provincias",
+          "kicker": "Poné a prueba tus creencias",
+          "question": "¿Qué % del territorio de Iguazú, Ituzaingó, Berón de Astrada y Campana está en manos extranjeras?",
+          "shortLabel": "Límite nacional",
+          "unit": "%",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "actual": 30,
+          "context": "Iguazú en Misiones, Ituzaingó y Berón de Astrada en Corrientes, y Campana en Buenos Aires",
+          "impact": "(todas localidades sobre la principal vía fluvial navegable del país, el río Paraná) superan ampliamente el 30%"
+        },
+        {
+          "type": "quiz",
+          "id": "dato-estadounidenses",
+          "kicker": "Poné a prueba tus creencias",
+          "question": "¿Cuántas hectáreas concentran solo los extranjeros estadounidenses?",
+          "shortLabel": "Límite nacional",
+          "unit": "ha",
+          "min": 0,
+          "max": 3000000,
+          "step": 1000,
+          "actual": 2260000,
+          "context": "1 hectárea es aproximadamente equivalente a una manzana (de calles de 100 metros de largo).",
+          "impact": "Los estadounidenses poseen una superficie mayor que la provincia de Tucumán."
+        }
       ]
     },
     {
@@ -271,7 +301,10 @@
         "linkLabel": "comunidaddeizquierda.com",
         "href": "https://comunidaddeizquierda.com/"
       },
-      "sources": "https://www.observatoriodetierras.ar/"
+      "sources": "https://www.observatoriodetierras.ar/",
+      "sources_2": "https://www.laizquierdadiario.com/Este-jueves-el-Senado-trata-la-ley-de-extranjerizacion-de-tierras",
+      "sources_2_text": "La Izquierda Diario: Saqueo. Este jueves el Senado trata la ley de extranjerización de tierras",
+      "sources_3": "https://laizquierdadiario.com"
     }
   ]
 }
