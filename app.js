@@ -777,6 +777,19 @@ function setupIdleToast() {
   reset();
 }
 
+/* ---------- Deep link al abrir con #hash ---------- */
+function scrollToInitialHash() {
+  const id = decodeURIComponent(window.location.hash.slice(1));
+  if (!id) return;
+  const target = document.getElementById(id);
+  if (!target) return;
+  // El contenido se renderiza recién ahora, así que reaplicamos el salto
+  // una vez que el layout quedó listo.
+  requestAnimationFrame(() => {
+    target.scrollIntoView({ block: 'start' });
+  });
+}
+
 /* ---------- Init ---------- */
 async function init() {
   try {
@@ -794,6 +807,7 @@ async function init() {
     setupScrolly(config.scrolly);
     setupScrollSpy(config.menu);
     setupIdleToast();
+    scrollToInitialHash();
   } catch (error) {
     els.flow.innerHTML = '<p class="flow-error">Abrí el proyecto con un servidor local para cargar la historia.</p>';
     console.error(error);
