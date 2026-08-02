@@ -86,3 +86,9 @@ Editar `landing-3/config.json`. Cada pregunta contiene:
 - `context` e `impact` para explicar el dato.
 
 Los cinco datos incluidos son ilustrativos y deben reemplazarse antes de publicar. Cada resultado genera una placa PNG de 1080 × 1350 para compartir o descargar.
+
+## El mapa
+
+`mapa/` es un mapa interactivo (Leaflet) con la extranjerización de tierras por departamento, con un interruptor "Ley actual / Sin límite" que recalcula el color de cada departamento. Se accede como página propia desde el ítem "05 — El mapa" del menú (no forma parte del scrollytelling, para no sumarle a esa página el peso de los datos geográficos).
+
+Los datos (GeoJSON de departamentos y provincias, estadísticas por provincia y nacionales) viven en `mapa/data.json` y se cargan con `fetch()`, igual que `landing-1` y `landing-3`.

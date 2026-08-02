@@ -26,7 +26,7 @@ function renderMenu(site, menu) {
   els.brandLabel.textContent = site.brandLabel;
   els.menuList.innerHTML = menu.map((item) => `
     <li>
-      <a class="menu-link" href="#${item.id}" data-target="${item.id}">
+      <a class="menu-link" href="${item.href || `#${item.id}`}" data-target="${item.id}">
         <span class="menu-number">${item.number || ''}</span>
         <span class="menu-text">
           <span class="menu-label">${item.label}</span>

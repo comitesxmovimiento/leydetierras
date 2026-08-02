@@ -28,6 +28,13 @@
       "number": "04",
       "label": "Quiénes somos",
       "subtitle": "Sumate a la comunidad de izquierda"
+    },
+    {
+      "id": "mapa",
+      "number": "05",
+      "label": "El mapa",
+      "subtitle": "Mirá el mapa con ley actual y nueva",
+      "href": "./mapa/"
     }
   ],
   "scrolly": {

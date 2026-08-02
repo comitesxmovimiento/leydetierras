@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="Explorá departamento por departamento cuánta tierra ya está en manos extranjeras, y qué cambia si se elimina el techo legal de la Ley 26.737."
+    />
+    <title>El mapa · La tierra no se vende</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../src/shared.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body class="map-page">
+    <header class="site-header">
+      <a class="brand" href="../">
+        <span class="brand-mark">LT</span>
+        <span>La tierra no se vende</span>
+      </a>
+      <a class="map-back" href="../#trama">Volver al sitio ↩</a>
+    </header>
+
+    <div id="loading-overlay">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Cargando mapa...</div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>Argentina sin límite</h1>
+        <p class="subtitulo">¿Qué pasa si se elimina la Ley de Tierras?</p>
+      </div>
+      <div class="content">
+        <p class="intro">
+          Hoy la <b>Ley 26.737</b> pone un techo: los extranjeros no pueden
+          superar el <b>15%</b> de las tierras rurales, ni el 30% de esa
+          porción una misma nacionalidad, ni las 1.000 ha por titular en zona
+          núcleo. El proyecto en debate en el Senado <b>elimina ese techo</b>
+          para privados extranjeros y deja "silencio administrativo
+          positivo": si el Estado no responde en <b>180 días</b>, la compra
+          queda aprobada sola.
+        </p>
+
+        <div class="toggle-wrap">
+          <div class="toggle-label">Movés el interruptor, cambia la ley</div>
+          <div class="switch" id="lawSwitch">
+            <div class="switch-thumb"></div>
+            <div class="switch-labels">
+              <span>Ley actual</span><span>Sin límite</span>
+            </div>
+          </div>
+          <div class="switch-caption" id="switchCaption">
+            Techo legal: 15% nacional / 30% por nacionalidad / 1.000 ha en
+            zona núcleo.
+          </div>
+        </div>
+
+        <div class="countdown-box" id="countdownBox">
+          <div class="countdown-title">
+            Silencio administrativo positivo
+          </div>
+          <div class="countdown-num" id="countdownNum">180</div>
+          <div class="countdown-sub">
+            días para que el Estado responda... si no lo hace
+          </div>
+          <div class="countdown-approved" id="countdownApproved">
+            ✔ Aprobada automáticamente
+          </div>
+        </div>
+
+        <div class="stats-box" id="statsBox">
+          <div class="stat-row">
+            <span>Ya extranjerizado (RNTR)</span><b id="statExt">-</b>
+          </div>
+          <div class="stat-row">
+            <span>Sobre superficie relevada</span><b id="statPct">-</b>
+          </div>
+          <div class="stat-row">
+            <span>Techo legal vigente</span><b id="statCap">15,0%</b>
+          </div>
+          <div class="stat-row">
+            <span>Techo tras la reforma</span><b id="statCapAfter">15,0%</b>
+          </div>
+        </div>
+
+        <div class="prov-select-wrap">
+          <label class="prov-select-label" for="provSelect"
+            >Ver una provincia</label
+          >
+          <select id="provSelect">
+            <option value="">— Todo el país —</option>
+          </select>
+        </div>
+
+        <div class="stats-box prov-stats-box" id="provStatsBox">
+          <div class="prov-stats-title" id="provStatsTitle">-</div>
+          <div class="stat-row">
+            <span>Departamentos con dato</span><b id="pvCount">-</b>
+          </div>
+          <div class="stat-row">
+            <span>Extranjerizado</span><b id="pvExt">-</b>
+          </div>
+          <div class="stat-row" id="pvCapRow">
+            <span>% provincial vs. techo 15%</span><b id="pvPct">-</b>
+          </div>
+          <div class="stat-row">
+            <span>Origen del capital</span><b id="pvOrigen">-</b>
+          </div>
+          <div class="stat-row">
+            <span>Proyectos mineros (activ. / previstos)</span
+            ><b id="pvMineria">-</b>
+          </div>
+          <div class="stat-row">
+            <span>Comunidades originarias</span><b id="pvCom">-</b>
+          </div>
+          <div class="stat-row">
+            <span>&nbsp;&nbsp;culminado / trámite / sin relevar</span
+            ><b id="pvComDetalle">-</b>
+          </div>
+          <div class="stat-row">
+            <span>Glaciares relevados</span><b id="pvGlaciares">-</b>
+          </div>
+        </div>
+
+        <div class="legend-box">
+          <div class="legend-title" id="legendTitle">
+            Intensidad de extranjerización (por depto., respecto al techo
+            del 15%)
+          </div>
+          <div class="legend-scale before" id="legendScale"></div>
+          <div class="legend-ticks">
+            <span>0%</span><span>7,5%</span><span>15%+</span>
+          </div>
+          <div class="legend-note" id="legendNote">
+            Ninguna provincia llega hoy al techo legal en su totalidad — pero
+            32 departamentos, tomados de forma individual, ya superan el 15%
+            (clickealos en el mapa).
+          </div>
+          <div class="legend-prov">
+            <div class="ln"></div> Límite provincial (24 provincias
+            delimitadas)
+          </div>
+        </div>
+
+        <a
+          href="https://observatoriodetierras.blogspot.com/"
+          target="_blank"
+          class="btn-blog"
+          >Ir al Observatorio</a
+        >
+
+        <div class="sources">
+          Fuente: Registro Nacional de Tierras Rurales (RNTR) vía
+          Observatorio PRIHA. Marco legal: Ley 26.737 y proyecto de reforma
+          en tratamiento en el Senado (2026). Esta pantalla es una
+          herramienta de divulgación: el escenario "Sin límite" ilustra la
+          eliminación del techo normativo, no una proyección de
+          compraventas futuras.
+        </div>
+      </div>
+    </aside>
+
+    <div id="map">
+      <div class="flash-banner" id="flashBanner"></div>
+      <div class="info-box" id="infoBox">
+        <button class="di-close" id="infoClose">✕</button>
+        <h4 id="infoNombre"></h4>
+        <div class="di-prov" id="infoProv"></div>
+        <div class="di-row">
+          <span>Extranjerizado</span><b id="infoExt"></b>
+        </div>
+        <div class="di-row">
+          <span>% del departamento</span><b id="infoPct"></b>
+        </div>
+        <div class="di-row" id="infoCapRow">
+          <span>Techo legal (15%)</span><b id="infoCap"></b>
+        </div>
+      </div>
+    </div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

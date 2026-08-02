@@ -1,0 +1,560 @@
+/* Reskin de "Argentina sin límite" (Leaflet) con el sistema visual de
+   La tierra no se vende: Malvinas Sans / Zilla Slab y la paleta de
+   src/shared.css en vez de la paleta original (navy + Teko + Montserrat). */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body.map-page {
+  font-family: "Zilla Slab", Georgia, serif;
+  background: var(--ink);
+  color: var(--paper);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+/* ---------- Header (mismo componente que el sitio principal) ---------- */
+.site-header {
+  position: fixed;
+  z-index: 2500;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  color: white;
+  mix-blend-mode: difference;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+}
+.map-back {
+  color: inherit;
+  font-size: 0.78rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.15rem;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: 400px;
+  background: rgba(23, 23, 19, 0.98);
+  background-image: repeating-linear-gradient(
+    110deg,
+    transparent 0 18px,
+    rgba(241, 237, 223, 0.03) 18px 19px
+  );
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  overflow-y: auto;
+}
+.sidebar-header {
+  padding: 4.5rem 12px 14px;
+  background: var(--green);
+  text-align: center;
+  color: var(--paper);
+  border-bottom: 4px solid var(--yellow);
+}
+.sidebar-header h1 {
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+.sidebar-header .subtitulo {
+  font-family: "Zilla Slab", Georgia, serif;
+  font-style: italic;
+  color: rgba(241, 237, 223, 0.85);
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+.content {
+  padding: 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.intro {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(241, 237, 223, 0.8);
+  margin-bottom: 14px;
+}
+.intro b {
+  color: var(--yellow);
+}
+
+/* ---------- Toggle switch ---------- */
+.toggle-wrap {
+  background: rgba(241, 237, 223, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.toggle-label {
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.switch {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  background: #262621;
+  border-radius: 26px;
+  cursor: pointer;
+  border: 2px solid var(--line);
+  overflow: hidden;
+}
+.switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(50% - 4px);
+  height: calc(100% - 6px);
+  background: var(--green);
+  border-radius: 22px;
+  transition:
+    transform 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+    background 0.45s;
+}
+.switch.after .switch-thumb {
+  transform: translateX(100%);
+  background: var(--red);
+}
+.switch-labels {
+  position: relative;
+  display: flex;
+  height: 100%;
+  z-index: 1;
+}
+.switch-labels span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  pointer-events: none;
+  color: rgba(241, 237, 223, 0.45);
+  transition: color 0.3s;
+}
+.switch:not(.after) .switch-labels span:first-child,
+.switch.after .switch-labels span:last-child {
+  color: var(--paper);
+  font-weight: 600;
+}
+.switch-caption {
+  font-size: 0.72rem;
+  color: rgba(241, 237, 223, 0.6);
+  text-align: center;
+  margin-top: 8px;
+  min-height: 2.4em;
+  line-height: 1.4;
+}
+
+/* ---------- Countdown (silencio administrativo) ---------- */
+.countdown-box {
+  display: none;
+  background: rgba(226, 61, 40, 0.12);
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.countdown-box.show {
+  display: block;
+}
+.countdown-title {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #f0a99b;
+  margin-bottom: 4px;
+}
+.countdown-num {
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: #f6c6bb;
+}
+.countdown-sub {
+  font-size: 0.65rem;
+  color: #f0a99b;
+  margin-top: 2px;
+}
+.countdown-approved {
+  display: none;
+  color: var(--yellow);
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+.countdown-approved.show {
+  display: block;
+}
+
+/* ---------- Stats ---------- */
+.stats-box {
+  background: rgba(241, 237, 223, 0.04);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  transition:
+    background 0.4s,
+    border-color 0.4s;
+  border: 1px solid transparent;
+}
+.stats-box.after {
+  background: rgba(226, 61, 40, 0.08);
+  border-color: rgba(226, 61, 40, 0.4);
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.72rem;
+  color: rgba(241, 237, 223, 0.65);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--line);
+}
+.stat-row:last-child {
+  border-bottom: none;
+}
+.stat-row b {
+  color: var(--paper);
+  font-size: 0.85rem;
+}
+.stat-row .warn {
+  color: #f6c6bb;
+}
+
+/* ---------- Province selector ---------- */
+.prov-select-wrap {
+  margin-bottom: 12px;
+}
+.prov-select-label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(241, 237, 223, 0.6);
+  margin-bottom: 5px;
+}
+#provSelect {
+  width: 100%;
+  padding: 9px 10px;
+  background: #262621;
+  color: var(--paper);
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-family: "Zilla Slab", Georgia, serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+#provSelect:focus {
+  outline: 2px solid var(--green);
+}
+
+.prov-stats-box {
+  display: none;
+}
+.prov-stats-box.show {
+  display: block;
+}
+.prov-stats-title {
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1.3rem;
+  color: var(--yellow);
+  margin-bottom: 6px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.stat-row.warn b {
+  color: #f6c6bb;
+}
+
+/* ---------- Legend ---------- */
+.legend-box {
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.legend-title {
+  font-size: 0.62rem;
+  color: rgba(241, 237, 223, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.legend-scale {
+  height: 10px;
+  border-radius: 4px;
+  margin-bottom: 3px;
+  transition: background 0.4s;
+}
+.legend-scale.before {
+  background: linear-gradient(
+    90deg,
+    #1e3a24,
+    var(--green) 50%,
+    var(--yellow) 80%,
+    var(--red) 100%
+  );
+}
+.legend-scale.after {
+  background: repeating-linear-gradient(
+    45deg,
+    #7a1f14,
+    #7a1f14 6px,
+    var(--red) 6px,
+    var(--red) 12px
+  );
+}
+.legend-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.58rem;
+  color: rgba(241, 237, 223, 0.6);
+}
+.legend-note {
+  font-size: 0.62rem;
+  color: rgba(241, 237, 223, 0.6);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.legend-prov {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  color: rgba(241, 237, 223, 0.75);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.legend-prov .ln {
+  width: 16px;
+  height: 0;
+  border-top: 2.5px dashed var(--yellow);
+}
+
+.sources {
+  font-size: 0.6rem;
+  color: rgba(241, 237, 223, 0.45);
+  line-height: 1.5;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.sources a {
+  color: rgba(241, 237, 223, 0.65);
+}
+.btn-blog {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 999px;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+.btn-blog:hover {
+  background: var(--red);
+  color: var(--paper);
+}
+
+/* ---------- Map ---------- */
+#map {
+  flex: 1;
+  position: relative;
+}
+.flash-banner {
+  position: absolute;
+  top: 5.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  opacity: 0;
+  background: rgba(23, 23, 19, 0.95);
+  border: 2px solid var(--red);
+  color: var(--paper);
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: 1px;
+  padding: 10px 26px;
+  border-radius: 10px;
+  z-index: 1200;
+  pointer-events: none;
+  transition:
+    opacity 0.4s,
+    transform 0.4s;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+.flash-banner.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.info-box {
+  position: absolute;
+  top: 5.25rem;
+  right: 20px;
+  background: rgba(23, 23, 19, 0.96);
+  padding: 16px;
+  border-radius: 12px;
+  z-index: 1000;
+  display: none;
+  border: 1px solid var(--green);
+  min-width: 280px;
+  max-width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+.info-box.after {
+  border-color: var(--red);
+}
+.info-box h4 {
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--yellow);
+  margin: 0 0 6px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.info-box .di-prov {
+  font-size: 0.7rem;
+  color: rgba(241, 237, 223, 0.6);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.info-box .di-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--line);
+}
+.info-box .di-row b {
+  color: var(--paper);
+}
+.info-box .di-row.warn b {
+  color: #f6c6bb;
+}
+.info-box .di-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: rgba(241, 237, 223, 0.6);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(23, 23, 19, 0.97);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+#loading-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--line);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loading-text {
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 1.3rem;
+  color: var(--green);
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  body.map-page {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    order: 1;
+    height: auto;
+    max-height: 52vh;
+  }
+  .sidebar-header {
+    padding-top: 4rem;
+  }
+  #map {
+    order: 2;
+    flex: 1;
+    min-height: 48vh;
+  }
+  .flash-banner,
+  .info-box {
+    top: 4.5rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .site-header {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch-thumb,
+  .flash-banner,
+  #loading-overlay,
+  .loading-spinner {
+    transition: none;
+    animation-duration: 0.01ms !important;
+  }
+}
