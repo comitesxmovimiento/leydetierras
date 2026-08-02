@@ -15,6 +15,7 @@ const contentTypes = {
   '.mp4': 'video/mp4',
   '.otf': 'font/otf',
   '.png': 'image/png',
+  '.svg': 'image/svg+xml',
   '.webp': 'image/webp'
 };
 

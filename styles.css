@@ -180,7 +180,8 @@ body.landing {
 }
 
 /* ---------- Scrollytelling cover ---------- */
-.story-intro {
+.story-intro,
+.map-cta {
   position: relative;
   display: flex;
   min-height: 100svh;
@@ -236,6 +237,70 @@ body.landing {
 }
 .cover-scroll-gif img{
   width: 100%;
+}
+
+/* ---------- Mapa CTA (mismo fondo/tipografía que "La tierra en juego") ---------- */
+.map-cta {
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 6rem 1.5rem 4rem;
+}
+.map-cta-text {
+  max-width: 34rem;
+}
+.map-cta-text h2 {
+  max-width: 19ch;
+  margin: 0.6rem 0 0;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: clamp(2.1rem, 8vw, 4rem);
+  font-weight: 400;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+.map-cta-visual {
+  display: flex;
+  width: min(100%, 16rem);
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.4rem 1.4rem 1.1rem;
+  border: 1px solid rgba(241, 237, 223, 0.25);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+.map-cta-visual:hover {
+  border-color: #e23d28;
+  transform: translateY(-2px);
+}
+.map-cta-graphic {
+  width: 100%;
+  height: auto;
+  max-height: 60svh;
+  object-fit: contain;
+}
+.map-cta-caption {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.2rem;
+  font-family: "Malvinas Sans", "Trebuchet MS", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (min-width: 800px) {
+  .map-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    padding: 5rem 4rem;
+  }
+  .map-cta-visual {
+    align-self: auto;
+  }
 }
 
 /* ---------- Idle scroll hint toast ---------- */

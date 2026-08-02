@@ -26,7 +26,7 @@ function renderMenu(site, menu) {
   els.brandLabel.textContent = site.brandLabel;
   els.menuList.innerHTML = menu.map((item) => `
     <li>
-      <a class="menu-link" href="${item.href || `#${item.id}`}" data-target="${item.id}">
+      <a class="menu-link" href="#${item.id}" data-target="${item.id}">
         <span class="menu-number">${item.number || ''}</span>
         <span class="menu-text">
           <span class="menu-label">${item.label}</span>
@@ -481,6 +481,7 @@ function setupScrolly(scrolly) {
 function renderSections(sections) {
   els.sections.innerHTML = (sections || []).map((section) => {
     if (section.type === 'poster') return posterSectionMarkup(section);
+    if (section.type === 'mapCta') return mapCtaSectionMarkup(section);
     if (Array.isArray(section.steps)) return `<div id="${section.id}" class="quiz-section" data-quiz-steps="${section.id}"></div>`;
     const emojis = section.emojis ? `<p class="section-emojis" aria-hidden="true">${section.emojis}</p>` : '';
     const sources = section.sources ? `<p class="section-sources">Fuentes utilizadas: <a href="${section.sources}">${section.sources}</a></p>` : '';
@@ -515,6 +516,25 @@ function renderSections(sections) {
       if (host) section.steps.forEach((step) => host.appendChild(createQuizInterlude(step)));
     }
   });
+}
+
+/* ---------- Mapa CTA (mismo fondo/tipografía que la portada) ---------- */
+function mapCtaSectionMarkup(section) {
+  return `
+    <section id="${section.id}" class="map-cta">
+      <div class="map-cta-text">
+        <p class="eyebrow">${section.eyebrow || ''}</p>
+        <h2>${section.title || ''}</h2>
+      </div>
+      <a class="map-cta-visual" href="${section.href}">
+        <img
+          class="map-cta-graphic"
+          src="./src/media/mapa-argentina.svg"
+          alt="Mapa de la Argentina coloreado según el porcentaje de tierra ya extranjerizada por provincia"
+        />
+        <span class="map-cta-caption">${section.caption || 'Mirá el mapa'} <span aria-hidden="true">→</span></span>
+      </a>
+    </section>`;
 }
 
 /* ---------- Poster editor (estilo landing-2) ---------- */

@@ -24,17 +24,16 @@
       "subtitle": "Compartible para generar conciencia"
     },
     {
-      "id": "quienes-somos",
+      "id": "mapa-cta",
       "number": "04",
-      "label": "Quiénes somos",
-      "subtitle": "Sumate a la comunidad de izquierda"
+      "label": "El mapa",
+      "subtitle": "Mirá el mapa con ley actual y nueva"
     },
     {
-      "id": "mapa",
+      "id": "quienes-somos",
       "number": "05",
-      "label": "El mapa",
-      "subtitle": "Mirá el mapa con ley actual y nueva",
-      "href": "./mapa/"
+      "label": "Quiénes somos",
+      "subtitle": "Sumate a la comunidad de izquierda"
     }
   ],
   "scrolly": {
@@ -339,6 +338,14 @@
           "impact": "Los estadounidenses poseen una superficie mayor que la provincia de Tucumán."
         }
       ]
+    },
+    {
+      "id": "mapa-cta",
+      "type": "mapCta",
+      "eyebrow": "Explorá el impacto",
+      "title": "¿Qué pasa si se elimina la Ley de Tierras?",
+      "caption": "Mirá el mapa",
+      "href": "./mapa/"
     },
     {
       "id": "quienes-somos",
