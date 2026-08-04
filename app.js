@@ -579,6 +579,59 @@ function posterSectionMarkup(section) {
     </section>`;
 }
 
+function posterStripHtml(text) {
+  return String(text)
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function posterParseRich(text) {
+  const tokens = [];
+  const regex = /<span>(.*?)<\/span>|([^<]+)/gi;
+  let match;
+  while ((match = regex.exec(text)) !== null) {
+    const bold = match[1] !== undefined;
+    const chunk = (bold ? match[1] : match[2]) || '';
+    chunk.split(/\s+/).forEach((word) => {
+      if (word) tokens.push({ text: word, bold });
+    });
+  }
+  return tokens;
+}
+
+function posterDrawRich(context, tokens, x, y, maxWidth, lineHeight, size) {
+  const normalFont = `${size}px "Malvinas Sans"`;
+  const boldFont = `bold ${size}px "Malvinas Sans"`;
+  context.font = normalFont;
+  const spaceWidth = context.measureText(' ').width;
+  let cursorX = x;
+  let cursorY = y;
+  let lineStart = true;
+  tokens.forEach((token) => {
+    context.font = token.bold ? boldFont : normalFont;
+    const wordWidth = context.measureText(token.text).width;
+    if (!lineStart && cursorX + spaceWidth + wordWidth - x > maxWidth) {
+      cursorX = x;
+      cursorY += lineHeight;
+      lineStart = true;
+    }
+    if (!lineStart) cursorX += spaceWidth;
+    context.fillText(token.text, cursorX, cursorY);
+    if (token.bold) {
+      const underlineY = cursorY + size + 2;
+      context.beginPath();
+      context.moveTo(cursorX, underlineY);
+      context.lineTo(cursorX + wordWidth, underlineY);
+      context.lineWidth = 2;
+      context.stroke();
+    }
+    cursorX += wordWidth;
+    lineStart = false;
+  });
+  return cursorY + lineHeight;
+}
+
 function posterWrapText(context, text, maxWidth) {
   const lines = [];
   text.trim().split(/\n+/).forEach((paragraph) => {
@@ -644,7 +697,25 @@ async function renderPosterCanvas(refs, section) {
   });
 
   context.strokeStyle = palette.foreground;
+  context.fillStyle = palette.foreground;
+  context.textAlign = 'left';
   context.lineWidth = 2;
+
+  const topSignature = posterStripHtml(section.topSignature || '');
+  if (topSignature) {
+    context.font = '34px "Malvinas Sans"';
+    context.textBaseline = 'top';
+    let ty = 96;
+    posterWrapText(context, topSignature, 880).forEach((line) => {
+      context.fillText(line, 100, ty);
+      ty += 42;
+    });
+    context.beginPath();
+    context.moveTo(100, ty + 8);
+    context.lineTo(980, ty + 8);
+    context.stroke();
+  }
+
   context.beginPath();
   context.moveTo(100, 1690);
   context.lineTo(980, 1690);
@@ -652,11 +723,7 @@ async function renderPosterCanvas(refs, section) {
 
   context.font = '30px "Malvinas Sans"';
   context.textBaseline = 'top';
-  let sy = 1720;
-  posterWrapText(context, section.signature || '', 880).forEach((line) => {
-    context.fillText(line, 100, sy);
-    sy += 38;
-  });
+  posterDrawRich(context, posterParseRich(section.signature || ''), 100, 1720, 880, 38, 30);
   return canvas;
 }
 
