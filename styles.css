@@ -82,13 +82,15 @@ body.landing {
   z-index: 50;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: safe center;
   padding: 5rem 1.5rem 3rem;
   background: #171713;
   color: #f1eddf;
   transform: translateX(100%);
   transition: transform 0.38s cubic-bezier(0.7, 0, 0.2, 1);
   visibility: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .site-menu.is-open {
   transform: translateX(0);
@@ -177,6 +179,24 @@ body.landing {
   background: #e23d28;
   color: #171713;
   border-color: #e23d28;
+}
+
+/* ---------- Embed iframe a pantalla completa ---------- */
+.embed-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  margin: 0;
+  padding: 0;
+  background: #171713;
+  overflow: hidden;
+}
+.embed-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* ---------- Scrollytelling cover ---------- */
