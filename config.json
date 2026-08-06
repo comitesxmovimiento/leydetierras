@@ -18,14 +18,26 @@
       "subtitle": "Creá un afiche para compartir en redes"
     },
     {
-      "id": "datos",
+      "id": "analisis",
       "number": "03",
+      "label": "Análisis x Ecozurda",
+      "subtitle": "Mirá el video interactivo"
+    },
+    {
+      "id": "datos",
+      "number": "04",
       "label": "¿Cuánto sabés?",
       "subtitle": "Compartible para generar conciencia"
     },
     {
+      "id": "mapa-cta",
+      "number": "05",
+      "label": "El mapa",
+      "subtitle": "Mirá el mapa con ley actual y nueva"
+    },
+    {
       "id": "quienes-somos",
-      "number": "04",
+      "number": "06",
       "label": "Quiénes somos",
       "subtitle": "Sumate a la comunidad de izquierda"
     }
@@ -269,6 +281,12 @@
       "topSignature": "El 06/08 todxs a las calles.",
       "signature": "Creá el tuyo en <span>nosevende.com.ar</span> - por trabajadorxs y usuarixs de tecnología organizadxs en Comités por un Movimiento Histórico.",
       "fileName": "la-tierra-no-se-vende.png"
+    },
+    {
+      "id": "analisis",
+      "type": "embed",
+      "title": "Análisis x Ecozurda",
+      "src": "https://landfall-interactive-video.lovable.app/"
     },
     {
       "id": "datos",
