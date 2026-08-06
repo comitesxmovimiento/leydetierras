@@ -30,14 +30,8 @@
       "subtitle": "Compartible para generar conciencia"
     },
     {
-      "id": "mapa-cta",
-      "number": "05",
-      "label": "El mapa",
-      "subtitle": "Mirá el mapa con ley actual y nueva"
-    },
-    {
       "id": "quienes-somos",
-      "number": "06",
+      "number": "05",
       "label": "Quiénes somos",
       "subtitle": "Sumate a la comunidad de izquierda"
     }
